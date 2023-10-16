@@ -6,8 +6,7 @@ const { Op } = require("sequelize");
 // const { query } = require("../database/dbquery");
 class UnempVeriController extends BaseController {
     static async getUnempVeriData(ctx) {
-        log4js.debug(ctx.request.query)
-        const {personID,personName,startDate}  = ctx.request.query
+        const {personID,personName,startDate,endDate}  = ctx.request.query
         const where = {}
         if (personID){
             where.personID = personID;
@@ -17,6 +16,9 @@ class UnempVeriController extends BaseController {
         }
         if(startDate){
             where.createtime= {[Op.gte] :startDate}
+        }
+        if(endDate){
+            where.createtime= {[Op.lte] :endDate}
         }
         const {page,skipIndex} = util.pager(ctx.request.query)
         // log4js.debug(`page:${page.pageNum},skipindex:${skipIndex}`);
@@ -38,6 +40,15 @@ class UnempVeriController extends BaseController {
             ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR,`查询异常:${err}`)
         }
 
+    }
+    static async addUnempVeriData(ctx) {
+        log4js.debug(ctx.request.body);
+        try{
+            await UnempVeriModel.create(ctx.request.body)
+        }catch(e){
+            ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR,`添加数据异常:${err}`)
+        }
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS,'添加成功')
     }
 }
 module.exports = UnempVeriController

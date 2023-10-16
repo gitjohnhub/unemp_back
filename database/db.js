@@ -24,7 +24,8 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
         // 是否自动添加时间戳
         timestamps: false,
         freezeTableName: true
-    }
+    },
+    timezone: '+08:00'
 })
 
 

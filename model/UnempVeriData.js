@@ -15,7 +15,11 @@ const UnempVeriData = sequelize.define('unempveri', {
     checknote: DataTypes.STRING,
     reviewnote: DataTypes.STRING,
     alreadydelete: DataTypes.TINYINT,
-    createtime: DataTypes.DATE,
+    createtime: {
+        type:DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+        timezone: '+08:00'
+    }
 })
 
 module.exports = UnempVeriData
