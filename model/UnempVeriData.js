@@ -1,4 +1,4 @@
-const {Sequelize, DataTypes} = require('sequelize')
+const {DataTypes} = require('sequelize')
 const sequelize = require('../database/db')
 const UnempVeriData = sequelize.define('unempveri', {
     id: {
@@ -14,7 +14,11 @@ const UnempVeriData = sequelize.define('unempveri', {
     checkoperator: DataTypes.STRING,
     checknote: DataTypes.STRING,
     reviewnote: DataTypes.STRING,
-    alreadydelete: DataTypes.TINYINT,
+    alreadydelete: {
+        type:DataTypes.TINYINT,
+        defaultValue:1
+    }
+        ,
     createtime: {
         type:DataTypes.DATE,
         defaultValue: DataTypes.NOW,

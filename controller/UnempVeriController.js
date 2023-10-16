@@ -41,6 +41,10 @@ class UnempVeriController extends BaseController {
         }
 
     }
+    /**
+     * add data
+     * @param {*} ctx
+     */
     static async addUnempVeriData(ctx) {
         log4js.debug(ctx.request.body);
         try{
