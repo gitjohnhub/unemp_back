@@ -15,11 +15,11 @@ const User = sequelize.define('user', {
     password:DataTypes.STRING,
     role_id: {
         type:DataTypes.INTEGER,
-        default:1
+        defaultValue:1
     },
     status: {
         type:DataTypes.TINYINT,
-        default:1
+        defaultValue:1
     }
 })
 
