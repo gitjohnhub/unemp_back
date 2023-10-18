@@ -2,19 +2,19 @@
 
 class BaseController {
   static renderJsonSuccess(code = 200, msg = '', data = []) {
-      return {
-          'code': code,
-          'msg': msg,
-          'data': data
-      }
+    return {
+      code: code,
+      msg: msg,
+      data: data,
+    };
   }
   static renderJsonFail(code = 40001, msg = '', data = []) {
     return {
-        'code': code,
-        'msg': msg,
-        'data': data
-    }
-}
+      code: code,
+      msg: msg,
+      data: data,
+    };
+  }
 }
 
-module.exports = BaseController
+module.exports = BaseController;

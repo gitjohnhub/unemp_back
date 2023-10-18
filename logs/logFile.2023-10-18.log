@@ -1,0 +1,969 @@
+[2023-10-18T14:12:37.195] [INFO] default - post register success
+[2023-10-18T14:12:37.196] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:14:08.762] [INFO] default - post register success
+[2023-10-18T14:14:08.764] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:15:21.046] [INFO] default - post register success
+[2023-10-18T14:15:21.048] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:19:08.319] [INFO] default - post register success
+[2023-10-18T14:19:08.320] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:20:48.660] [INFO] default - post register success
+[2023-10-18T14:20:48.661] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:24:53.859] [INFO] default - post register success
+[2023-10-18T14:24:53.859] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:24:53.859] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:17:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:27:32.015] [INFO] default - post register success
+[2023-10-18T14:27:32.016] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:27:32.016] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:17:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:32:43.275] [INFO] default - post register success
+[2023-10-18T14:32:43.277] [DEBUG] default - {}
+[2023-10-18T14:32:43.280] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:32:43.282] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:33:00.815] [INFO] default - post register success
+[2023-10-18T14:33:00.816] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:33:00.816] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:33:31.878] [INFO] default - post register success
+[2023-10-18T14:33:31.879] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:33:31.879] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:34:14.802] [INFO] default - post register success
+[2023-10-18T14:34:14.802] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:34:14.802] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:34:55.449] [INFO] default - post register success
+[2023-10-18T14:34:55.449] [DEBUG] default - undefined
+[2023-10-18T14:34:55.449] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:34:55.450] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:35:59.763] [INFO] default - post register success
+[2023-10-18T14:35:59.763] [DEBUG] default - undefined
+[2023-10-18T14:35:59.763] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:35:59.763] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:39:55.274] [INFO] default - post register success
+[2023-10-18T14:39:55.275] [DEBUG] default - object
+[2023-10-18T14:39:55.275] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:39:55.275] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:41:03.498] [INFO] default - post register success
+[2023-10-18T14:41:03.499] [DEBUG] default - object
+[2023-10-18T14:41:03.499] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:41:03.499] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:41:14.691] [INFO] default - post register success
+[2023-10-18T14:41:14.691] [DEBUG] default - object
+[2023-10-18T14:41:14.691] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:41:14.696] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:41:34.547] [INFO] default - post register success
+[2023-10-18T14:41:34.547] [DEBUG] default - object
+[2023-10-18T14:41:34.547] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:41:34.547] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:41:53.385] [INFO] default - post register success
+[2023-10-18T14:41:53.386] [DEBUG] default - {}
+[2023-10-18T14:41:53.386] [DEBUG] default - username:undefined,undefined,undefined
+[2023-10-18T14:41:53.386] [DEBUG] default - Error: Illegal argument undefined
+    at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/md5/md5.js:152:13)
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:18:27)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+[2023-10-18T14:42:39.385] [INFO] default - post register success
+[2023-10-18T14:42:39.386] [DEBUG] default - { username: 'test', account: 'test@example.com', password: '123456' }
+[2023-10-18T14:42:39.386] [DEBUG] default - username:test,test@example.com,123456
+[2023-10-18T14:42:39.387] [DEBUG] default - ReferenceError: User is not defined
+    at addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:19:25)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:45:18)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:346:16
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:44:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:351:31)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-router/lib/router.js:332:32)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+[2023-10-18T14:43:29.619] [INFO] default - post register success
+[2023-10-18T14:43:29.620] [DEBUG] default - { username: 'test', account: 'test@example.com', password: '123456' }
+[2023-10-18T14:43:29.620] [DEBUG] default - username:test,test@example.com,123456
+[2023-10-18T14:43:29.641] [DEBUG] default - Error
+    at Query.run (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/sequelize/lib/dialects/mysql/query.js:52:25)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/sequelize/lib/sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async MySQLQueryInterface.select (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/sequelize/lib/dialects/abstract/query-interface.js:407:12)
+    at async user.findAll (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/sequelize/lib/model.js:1140:21)
+    at async user.findOne (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/sequelize/lib/model.js:1240:12)
+    at async addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:19:25)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  name: 'SequelizeDatabaseError',
+  parent: Error: Table 'work.user' doesn't exist
+      at Packet.asError (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/packets/packet.js:728:17)
+      at Query.execute (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/commands/command.js:29:26)
+      at Connection.handlePacket (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/connection.js:478:34)
+      at PacketParser.onPacket (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/connection.js:97:12)
+      at PacketParser.executeStart (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/packet_parser.js:75:16)
+      at Socket.<anonymous> (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/connection.js:104:25)
+      at Socket.emit (node:events:514:28)
+      at addChunk (node:internal/streams/readable:343:12)
+      at readableAddChunk (node:internal/streams/readable:316:9)
+      at Readable.push (node:internal/streams/readable:253:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    code: 'ER_NO_SUCH_TABLE',
+    errno: 1146,
+    sqlState: '42S02',
+    sqlMessage: "Table 'work.user' doesn't exist",
+    sql: "SELECT `id`, `username`, `account`, `password`, `role_id`, `status` FROM `user` AS `user` WHERE `user`.`username` = 'test' LIMIT 1;",
+    parameters: undefined
+  },
+  original: Error: Table 'work.user' doesn't exist
+      at Packet.asError (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/packets/packet.js:728:17)
+      at Query.execute (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/commands/command.js:29:26)
+      at Connection.handlePacket (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/connection.js:478:34)
+      at PacketParser.onPacket (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/connection.js:97:12)
+      at PacketParser.executeStart (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/packet_parser.js:75:16)
+      at Socket.<anonymous> (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/mysql2/lib/connection.js:104:25)
+      at Socket.emit (node:events:514:28)
+      at addChunk (node:internal/streams/readable:343:12)
+      at readableAddChunk (node:internal/streams/readable:316:9)
+      at Readable.push (node:internal/streams/readable:253:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    code: 'ER_NO_SUCH_TABLE',
+    errno: 1146,
+    sqlState: '42S02',
+    sqlMessage: "Table 'work.user' doesn't exist",
+    sql: "SELECT `id`, `username`, `account`, `password`, `role_id`, `status` FROM `user` AS `user` WHERE `user`.`username` = 'test' LIMIT 1;",
+    parameters: undefined
+  },
+  sql: "SELECT `id`, `username`, `account`, `password`, `role_id`, `status` FROM `user` AS `user` WHERE `user`.`username` = 'test' LIMIT 1;",
+  parameters: {}
+}
+[2023-10-18T14:45:53.275] [INFO] default - post register success
+[2023-10-18T14:45:53.275] [DEBUG] default - { username: 'test', account: 'test@example.com', password: '123456' }
+[2023-10-18T14:45:53.276] [DEBUG] default - username:test,test@example.com,123456
+[2023-10-18T14:45:53.318] [INFO] default - ReferenceError: data is not defined
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:29:65
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async addUser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:26:11)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5)
+[2023-10-18T14:46:53.249] [INFO] default - post register success
+[2023-10-18T14:46:53.250] [DEBUG] default - { username: 'test', account: 'test@example.com', password: '123456' }
+[2023-10-18T14:46:53.250] [DEBUG] default - username:test,test@example.com,123456
+[2023-10-18T14:47:11.432] [INFO] default - post register success
+[2023-10-18T14:47:11.432] [DEBUG] default - { username: 'abc', account: 'test@example.com', password: '123456' }
+[2023-10-18T14:47:11.432] [DEBUG] default - username:abc,test@example.com,123456
+[2023-10-18T15:35:13.178] [INFO] default - post register success
+[2023-10-18T15:35:13.179] [DEBUG] default - { username: '归一聪', account: 'test', password: '123' }
+[2023-10-18T15:35:13.179] [DEBUG] default - username:归一聪,test,123
+[2023-10-18T15:36:51.902] [DEBUG] default - TypeError: Cannot set properties of undefined (setting 'token')
+    at login (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:16:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5)
+[2023-10-18T15:38:21.600] [DEBUG] default - undefined
+[2023-10-18T15:38:21.601] [DEBUG] default - TypeError: Cannot set properties of undefined (setting 'token')
+    at login (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:17:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5)
+[2023-10-18T15:38:51.832] [DEBUG] default - user {
+  dataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  _previousDataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  uniqno: 1,
+  _changed: Set(0) {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [ 'id', 'username', 'account', 'password', 'role_id', 'status' ]
+  },
+  isNewRecord: false
+}
+[2023-10-18T15:38:51.839] [DEBUG] default - ReferenceError: data is not defined
+    at login (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/controller/UserController.js:16:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:30:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5)
+[2023-10-18T15:39:52.694] [DEBUG] default - user {
+  dataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  _previousDataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  uniqno: 1,
+  _changed: Set(0) {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [ 'id', 'username', 'account', 'password', 'role_id', 'status' ]
+  },
+  isNewRecord: false
+}
+[2023-10-18T15:43:16.284] [DEBUG] default - user {
+  dataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  _previousDataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  uniqno: 1,
+  _changed: Set(0) {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [ 'id', 'username', 'account', 'password', 'role_id', 'status' ]
+  },
+  isNewRecord: false
+}
+[2023-10-18T15:43:16.287] [DEBUG] default - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozLCJ1c2VybmFtZSI6IuW9kuS4gOiBqiIsImFjY291bnQiOiJ0ZXN0IiwicGFzc3dvcmQiOiIyMDJjYjk2MmFjNTkwNzViOTY0YjA3MTUyZDIzNGI3MCIsInJvbGVfaWQiOm51bGwsInN0YXR1cyI6bnVsbH0sImlhdCI6MTY5NzYxNDk5NiwiZXhwIjoxNjk3NjE4NTk2fQ.XKG5kOsUckNn2G_6kgmDHtzA8ZEPXfnGAlYTajhAPGA
+[2023-10-18T16:04:21.226] [DEBUG] default - user {
+  dataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  _previousDataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  uniqno: 1,
+  _changed: Set(0) {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [ 'id', 'username', 'account', 'password', 'role_id', 'status' ]
+  },
+  isNewRecord: false
+}
+[2023-10-18T16:04:21.228] [DEBUG] default - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozLCJ1c2VybmFtZSI6IuW9kuS4gOiBqiIsImFjY291bnQiOiJ0ZXN0IiwicGFzc3dvcmQiOiIyMDJjYjk2MmFjNTkwNzViOTY0YjA3MTUyZDIzNGI3MCIsInJvbGVfaWQiOm51bGwsInN0YXR1cyI6bnVsbH0sImlhdCI6MTY5NzYxNjI2MSwiZXhwIjoxNjk3NjE5ODYxfQ.iHu7OUVwfJdzBAN9U8jryCYn7hnWq8uLPBSP5LbrLLo
+[2023-10-18T16:04:24.249] [DEBUG] default - user {
+  dataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  _previousDataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  uniqno: 1,
+  _changed: Set(0) {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [ 'id', 'username', 'account', 'password', 'role_id', 'status' ]
+  },
+  isNewRecord: false
+}
+[2023-10-18T16:04:24.251] [DEBUG] default - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozLCJ1c2VybmFtZSI6IuW9kuS4gOiBqiIsImFjY291bnQiOiJ0ZXN0IiwicGFzc3dvcmQiOiIyMDJjYjk2MmFjNTkwNzViOTY0YjA3MTUyZDIzNGI3MCIsInJvbGVfaWQiOm51bGwsInN0YXR1cyI6bnVsbH0sImlhdCI6MTY5NzYxNjI2NCwiZXhwIjoxNjk3NjE5ODY0fQ.8OyXqHwX3inus1ta7j03pHM3o21feQ0eTC7quqtEX0I
+[2023-10-18T16:14:09.356] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:23:22)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:9
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+    at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+    at serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:15)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5)
+[2023-10-18T16:16:51.873] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:17:54.024] [DEBUG] default - user {
+  dataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  _previousDataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  uniqno: 1,
+  _changed: Set(0) {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [ 'id', 'username', 'account', 'password', 'role_id', 'status' ]
+  },
+  isNewRecord: false
+}
+[2023-10-18T16:17:54.028] [DEBUG] default - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozLCJ1c2VybmFtZSI6IuW9kuS4gOiBqiIsImFjY291bnQiOiJ0ZXN0IiwicGFzc3dvcmQiOiIyMDJjYjk2MmFjNTkwNzViOTY0YjA3MTUyZDIzNGI3MCIsInJvbGVfaWQiOm51bGwsInN0YXR1cyI6bnVsbH0sImlhdCI6MTY5NzYxNzA3NCwiZXhwIjoxNjk3NjIwNjc0fQ.DpDEP071uYrjgj5bxSb0tqOhrUoUFBEPf4m9skfBhqQ
+[2023-10-18T16:18:04.592] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:18:38.106] [DEBUG] default - user {
+  dataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  _previousDataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  uniqno: 1,
+  _changed: Set(0) {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [ 'id', 'username', 'account', 'password', 'role_id', 'status' ]
+  },
+  isNewRecord: false
+}
+[2023-10-18T16:18:38.108] [DEBUG] default - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozLCJ1c2VybmFtZSI6IuW9kuS4gOiBqiIsImFjY291bnQiOiJ0ZXN0IiwicGFzc3dvcmQiOiIyMDJjYjk2MmFjNTkwNzViOTY0YjA3MTUyZDIzNGI3MCIsInJvbGVfaWQiOm51bGwsInN0YXR1cyI6bnVsbH0sImlhdCI6MTY5NzYxNzExOCwiZXhwIjoxNjk3NjUzMTE4fQ.9LfoQZSnpJpkwXBNmH2ri4s351GrW-onxumQ9tT2Bgg
+[2023-10-18T16:18:47.931] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:19:06.338] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:19:23.004] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:37:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:31:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:21:22.821] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:21:29.770] [DEBUG] default - user {
+  dataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  _previousDataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  uniqno: 1,
+  _changed: Set(0) {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [ 'id', 'username', 'account', 'password', 'role_id', 'status' ]
+  },
+  isNewRecord: false
+}
+[2023-10-18T16:21:29.772] [DEBUG] default - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozLCJ1c2VybmFtZSI6IuW9kuS4gOiBqiIsImFjY291bnQiOiJ0ZXN0IiwicGFzc3dvcmQiOiIyMDJjYjk2MmFjNTkwNzViOTY0YjA3MTUyZDIzNGI3MCIsInJvbGVfaWQiOm51bGwsInN0YXR1cyI6bnVsbH0sImlhdCI6MTY5NzYxNzI4OSwiZXhwIjoxNjk3NjUzMjg5fQ.Pk4FeTrqwFIY_EIgrWQjEt8lRxomAg0JsOHAOPr-GtE
+[2023-10-18T16:21:40.063] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:21:48.313] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:22:00.353] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:22:01.496] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:23:08.161] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:23:32.423] [DEBUG] default - UnauthorizedError: Authentication Error
+    at Object.throw (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa/lib/context.js:97:11)
+    at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:66:26)
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:3
+    at async /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:3
+    at async serve (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-static/index.js:53:9)
+    at async logger (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-logger/index.js:67:7)
+    at async bodyParser (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-bodyparser/index.js:78:5) {
+  originalError: JsonWebTokenError: invalid signature
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:171:19
+      at getSecret (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:97:14)
+      at module.exports [as verify] (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/jsonwebtoken/verify.js:101:10)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:5:13
+      at new Promise (<anonymous>)
+      at module.exports (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/verify.js:4:12)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:64
+      at Array.map (<anonymous>)
+      at jwt (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-jwt/lib/index.js:38:43)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-unless/index.js:29:12
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:38:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at /Users/elon/workspace/Project_web/unempmanagement/unemp_back/app.js:32:9
+      at dispatch (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-compose/index.js:42:32)
+      at views (/Users/elon/workspace/Project_web/unempmanagement/unemp_back/node_modules/koa-views/src/index.js:91:12)
+}
+[2023-10-18T16:26:16.326] [DEBUG] default - user {
+  dataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  _previousDataValues: {
+    id: 3,
+    username: '归一聪',
+    account: 'test',
+    password: '202cb962ac59075b964b07152d234b70',
+    role_id: null,
+    status: null
+  },
+  uniqno: 1,
+  _changed: Set(0) {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [ 'id', 'username', 'account', 'password', 'role_id', 'status' ]
+  },
+  isNewRecord: false
+}
+[2023-10-18T16:26:16.329] [DEBUG] default - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozLCJ1c2VybmFtZSI6IuW9kuS4gOiBqiIsImFjY291bnQiOiJ0ZXN0IiwicGFzc3dvcmQiOiIyMDJjYjk2MmFjNTkwNzViOTY0YjA3MTUyZDIzNGI3MCIsInJvbGVfaWQiOm51bGwsInN0YXR1cyI6bnVsbH0sImlhdCI6MTY5NzYxNzU3NiwiZXhwIjoxNjk3NjUzNTc2fQ.iOrzxjO084cUlWYaFmOCnp0ntZQjzE5nkrI6xO8YpGI

@@ -13,8 +13,14 @@ const User = sequelize.define('user', {
     username: DataTypes.STRING,
     account:DataTypes.STRING,
     password:DataTypes.STRING,
-    role_id: DataTypes.INTEGER,
-    status: DataTypes.TINYINT
+    role_id: {
+        type:DataTypes.INTEGER,
+        default:1
+    },
+    status: {
+        type:DataTypes.TINYINT,
+        default:1
+    }
 })
 
 module.exports = User

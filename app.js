@@ -5,11 +5,13 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-
+const koa_jwt = require('koa-jwt')
 const index = require('./routes/index')
 const users = require('./routes/users')
 const unempVeri = require('./routes/unempVeri')
-
+const BaseController = require('./controller/BaseController')
+const log4j = require('./utils/log4j')
+const util = require('./utils/util')
 // error handler
 onerror(app)
 // middlewares
@@ -31,6 +33,25 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
+
+app.use(async (ctx, next) => {
+  await next().catch((err) => {
+    log4j.debug(err)
+    if (err.status == '401') {
+      ctx.body = BaseController.renderJsonFail(util.CODE.AUTH_ERROR,'Token认证失败,请重新登录');
+    } else {
+      throw err;
+    }
+  });
+});
+// 请求认证
+
+app.use(
+  koa_jwt({ secret: 'jiading' }).unless({
+    path: [/^\/users\/login/],
+  })
+);
+
 
 // routes
 app.use(index.routes(), index.allowedMethods())
