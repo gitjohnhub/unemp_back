@@ -52,6 +52,29 @@ app.use(
   })
 );
 
+app.use(async (ctx, next) => {
+
+  await next();
+
+  if (ctx.status === 404) {
+    ctx.body = BaseController.renderJsonFail(util.CODE.PARAM_ERROR,'数据请求路径错误');
+  }
+
+});
+
+app.use(async (ctx, next) => {
+
+  try {
+    await next();
+  } catch (err) {
+    if (err.status === 401) {
+      ctx.status = 401;
+      ctx.body = BaseController.renderJsonFail(util.CODE.AUTH_ERROR,'未授权');
+    } else {
+      throw err;
+    }
+  }
+})
 
 // routes
 app.use(index.routes(), index.allowedMethods())
