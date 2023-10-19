@@ -48,7 +48,7 @@ app.use(async (ctx, next) => {
 
 app.use(
   koa_jwt({ secret: 'jiading' }).unless({
-    path: [/^\/users\/login/],
+    path: [/^\/api\/users\/login/],
   })
 );
 
