@@ -3,13 +3,16 @@ const UnempVeriModel = require('../model/UnempVeriData')
 const log4js = require('../utils/log4j');
 const util = require('../utils/util');
 const { Op } = require("sequelize");
-// const { query } = require("../database/dbquery");
 class UnempVeriController extends BaseController {
     static async getUnempVeriData(ctx) {
-        const {personID,personName,startDate,endDate}  = ctx.request.query
+        const {personID,personName,startDate,endDate,monthSelect,checkoperators}  = ctx.request.body
+        console.log('ctx====>>',monthSelect)
         const where = {}
         if (personID){
             where.personID = personID;
+        }
+        if (monthSelect){
+            where.createtime= {[Op.between] :monthSelect}
         }
         if (personName){
             where.personName = personName;
@@ -20,8 +23,12 @@ class UnempVeriController extends BaseController {
         if(endDate){
             where.createtime= {[Op.lte] :endDate}
         }
-        const {page,skipIndex} = util.pager(ctx.request.query)
-        // log4js.debug(`page:${page.pageNum},skipindex:${skipIndex}`);
+        if (checkoperators){
+            where.checkoperator= {[Op.or] :checkoperators}
+
+        }
+        const {page,skipIndex} = util.pager(ctx.request.body)
+        log4js.debug(`page:${page.current},skipindex:${skipIndex}`);
         try{
             const {count,rows} = await UnempVeriModel.findAndCountAll({
                 where,
