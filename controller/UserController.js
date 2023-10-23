@@ -26,13 +26,33 @@ class UserController extends BaseController {
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR,'服务器内部错误',error);
     }
   }
+  static async getUsers(ctx){
+    const {username}  = ctx.request.query
+    const where = {}
+    if (username){
+        where.username = username;
+    }
+    try{
+        const {count,rows} = await User.findAndCountAll({
+            where,
+            attributes: ['id', 'userName','account','role_id','status'],
+            order: [['id', 'DESC']],
+        })
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS,'查询成功', {
+            count,
+            rows
+        })
+    }catch(err){
+        ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR,`查询异常:${err}`)
+    }
+
+
+  };
 
   static async addUser(ctx) {
     log4js.info('post register success');
     try {
       const { username, account, password } = ctx.request.body;
-      log4js.debug(ctx.request.body);
-      log4js.debug(`username:${username},${account},${password}`);
       const md5_userPwd = md5(password);
       const existUser = await User.findOne({ where: { username: username } });
       if (existUser === null) {

@@ -4,5 +4,6 @@ router.prefix('/api/users')
 
 router.post('/login', UserController.login)
 router.post('/addUser', UserController.addUser)
+router.post('/getUsers', UserController.getUsers)
 
 module.exports = router

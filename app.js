@@ -53,9 +53,7 @@ app.use(
 );
 
 app.use(async (ctx, next) => {
-
   await next();
-
   if (ctx.status === 404) {
     ctx.body = BaseController.renderJsonFail(util.CODE.PARAM_ERROR,'数据请求路径错误');
   }
