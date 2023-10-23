@@ -4,4 +4,5 @@ router.prefix('/api')
 
 router.get('/unempVeriAll',UnempVeriController.getUnempVeriData )
 router.post('/addUnempVeriData',UnempVeriController.addUnempVeriData )
+router.post('/deleteUnempVeriData',UnempVeriController.deleteUnempVeriData )
 module.exports = router

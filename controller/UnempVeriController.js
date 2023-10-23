@@ -32,7 +32,7 @@ class UnempVeriController extends BaseController {
             ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS,'查询成功', {
                 page:{
                     ...page,
-                    count
+                    total:count
                 },
                 rows
             })
@@ -49,6 +49,21 @@ class UnempVeriController extends BaseController {
         log4js.debug(ctx.request.body);
         try{
             await UnempVeriModel.create(ctx.request.body)
+        }catch(e){
+            ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR,`添加数据异常:${err}`)
+        }
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS,'添加成功')
+    }
+    // TODO
+    static async deleteUnempVeriData(ctx) {
+        log4js.debug(ctx.request.body);
+        const {id} = ctx.request.body
+        try{
+            await UnempVeriModel.update({alreadydelete:2},{
+                where:{
+                    id:id
+                }
+            })
         }catch(e){
             ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR,`添加数据异常:${err}`)
         }
