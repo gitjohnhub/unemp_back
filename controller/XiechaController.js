@@ -1,39 +1,22 @@
 const BaseController = require('./BaseController');
-const UnempVeriModel = require('../model/UnempVeriData');
+const XiechaModel = require('../model/XiechaData');
 const log4js = require('../utils/log4j');
 const util = require('../utils/util');
 const { Op } = require('sequelize');
-class UnempVeriController extends BaseController {
-  static async getUnempVeriData(ctx) {
-    const { personID, personName, startDate, endDate, monthSelect, checkoperators,alreadydelete } =
-      ctx.request.body;
-    console.log('ctx====>>', monthSelect);
+class XiechaController extends BaseController {
+  static async getXiechaData(ctx) {
+    const { personID, personName } = ctx.request.body;
     const where = {};
     if (personID) {
       where.personID = personID;
     }
-    if (alreadydelete) {
-        where.alreadydelete = alreadydelete;
-      }
-    if (monthSelect) {
-      where.createtime = { [Op.between]: monthSelect };
-    }
     if (personName) {
-      where.personName = personName;
-    }
-    if (startDate) {
-      where.createtime = { [Op.gte]: startDate };
-    }
-    if (endDate) {
-      where.createtime = { [Op.lte]: endDate };
-    }
-    if (checkoperators) {
-      where.checkoperator = { [Op.or]: checkoperators };
-    }
+        where.personName = personName;
+      }
     const { page, skipIndex } = util.pager(ctx.request.body);
     log4js.debug(`page:${page.current},skipindex:${skipIndex}`);
     try {
-      const { count, rows } = await UnempVeriModel.findAndCountAll({
+      const { count, rows } = await XiechaModel.findAndCountAll({
         where,
         order: [['createtime', 'DESC']],
         offset: skipIndex,
@@ -54,21 +37,21 @@ class UnempVeriController extends BaseController {
    * add data
    * @param {*} ctx
    */
-  static async addUnempVeriData(ctx) {
+  static async addXiechaData(ctx) {
     log4js.debug(ctx.request.body);
     try {
-      await UnempVeriModel.create(ctx.request.body);
+      await XiechaModel.create(ctx.request.body);
     } catch (e) {
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
     }
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
   }
   // TODO
-  static async deleteUnempVeriData(ctx) {
+  static async deleteXiechaData(ctx) {
     log4js.debug(ctx.request.body);
     const { id } = ctx.request.body;
     try {
-      await UnempVeriModel.update(
+      await XiechaModel.update(
         { alreadydelete: 2 },
         {
           where: {
@@ -82,7 +65,7 @@ class UnempVeriController extends BaseController {
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
   }
   // update
-  static async updateUnempVeriData(ctx) {
+  static async updateXiechaData(ctx) {
     const { id, jiezhen,checknote,verification, reviewoperator, reviewnote ,alreadydelete} = ctx.request.body;
     log4js.debug(ctx.request.body)
     let params = {
@@ -94,27 +77,8 @@ class UnempVeriController extends BaseController {
         reviewoperator:reviewoperator || null,
         // ...
       }
-    // const params = {};
-    // if (alreadydelete) {
-    //   params.alreadydelete = alreadydelete;
-    // }
-    // if (verification) {
-    //     params.verification = verification;
-    //   }
-    // if (reviewoperator) {
-    //     params.reviewoperator = reviewoperator;
-    // }
-    // if (jiezhen) {
-    //     params.jiezhen = jiezhen;
-    // }
-    // if (checknote) {
-    //     params.checknote = checknote;
-    // }
-    // if (reviewnote) {
-    //     params.reviewnote = reviewnote;
-    // }
     try {
-      await UnempVeriModel.update(
+      await XiechaModel.update(
         params,
         {
           where: {
@@ -128,4 +92,4 @@ class UnempVeriController extends BaseController {
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, `ID:${id},更新成功`);
   }
 }
-module.exports = UnempVeriController;
+module.exports = XiechaController;
