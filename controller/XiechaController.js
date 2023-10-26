@@ -68,15 +68,28 @@ class XiechaController extends BaseController {
   static async updateXiechaData(ctx) {
     const { id, jiezhen,checknote,verification, reviewoperator, reviewnote ,alreadydelete} = ctx.request.body;
     log4js.debug(ctx.request.body)
-    let params = {
-        alreadydelete: alreadydelete || null,
-        verification: verification || null,
-        reviewnote:reviewnote || null,
-        jiezhen:jiezhen || null,
-        checknote:checknote || null,
-        reviewoperator:reviewoperator || null,
-        // ...
+    const params = {};
+    if (alreadydelete) {
+      params.alreadydelete = alreadydelete;
+    }
+    if (checkoperator) {
+        params.checkoperator = checkoperator;
+    }
+    if (verification) {
+        params.verification = verification;
       }
+    if (reviewoperator) {
+        params.reviewoperator = reviewoperator;
+    }
+    if (jiezhen) {
+        params.jiezhen = jiezhen;
+    }
+    if (checknote) {
+        params.checknote = checknote;
+    }
+    if (reviewnote) {
+        params.reviewnote = reviewnote;
+    }
     try {
       await XiechaModel.update(
         params,

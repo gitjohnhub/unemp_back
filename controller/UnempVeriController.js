@@ -5,16 +5,27 @@ const util = require('../utils/util');
 const { Op } = require('sequelize');
 class UnempVeriController extends BaseController {
   static async getUnempVeriData(ctx) {
-    const { personID, personName, startDate, endDate, monthSelect, checkoperators,alreadydelete } =
-      ctx.request.body;
-    console.log('ctx====>>', monthSelect);
+    const {
+      personID,
+      personName,
+      startDate,
+      endDate,
+      monthSelect,
+      checkoperators,
+      alreadydelete,
+      verification,
+    } = ctx.request.body;
+    console.log('ctx====>>', ctx.request.body);
     const where = {};
     if (personID) {
       where.personID = personID;
     }
     if (alreadydelete) {
-        where.alreadydelete = alreadydelete;
-      }
+      where.alreadydelete = alreadydelete;
+    }
+    if (verification) {
+      where.verification = verification;
+    }
     if (monthSelect) {
       where.createtime = { [Op.between]: monthSelect };
     }
@@ -83,45 +94,45 @@ class UnempVeriController extends BaseController {
   }
   // update
   static async updateUnempVeriData(ctx) {
-    const { id, jiezhen,checknote,verification, reviewoperator, reviewnote ,alreadydelete} = ctx.request.body;
-    log4js.debug(ctx.request.body)
-    let params = {
-        alreadydelete: alreadydelete || null,
-        verification: verification || null,
-        reviewnote:reviewnote || null,
-        jiezhen:jiezhen || null,
-        checknote:checknote || null,
-        reviewoperator:reviewoperator || null,
-        // ...
-      }
-    // const params = {};
-    // if (alreadydelete) {
-    //   params.alreadydelete = alreadydelete;
-    // }
-    // if (verification) {
-    //     params.verification = verification;
-    //   }
-    // if (reviewoperator) {
-    //     params.reviewoperator = reviewoperator;
-    // }
-    // if (jiezhen) {
-    //     params.jiezhen = jiezhen;
-    // }
-    // if (checknote) {
-    //     params.checknote = checknote;
-    // }
-    // if (reviewnote) {
-    //     params.reviewnote = reviewnote;
-    // }
+    const {
+      id,
+      jiezhen,
+      checknote,
+      verification,
+      reviewoperator,
+      reviewnote,
+      alreadydelete,
+      checkoperator,
+    } = ctx.request.body;
+    log4js.debug(ctx.request.body);
+    const params = {};
+    if (alreadydelete) {
+      params.alreadydelete = alreadydelete;
+    }
+    if (checkoperator) {
+      params.checkoperator = checkoperator;
+    }
+    if (verification) {
+      params.verification = verification;
+    }
+    if (reviewoperator) {
+      params.reviewoperator = reviewoperator;
+    }
+    if (jiezhen) {
+      params.jiezhen = jiezhen;
+    }
+    if (checknote) {
+      params.checknote = checknote;
+    }
+    if (reviewnote) {
+      params.reviewnote = reviewnote;
+    }
     try {
-      await UnempVeriModel.update(
-        params,
-        {
-          where: {
-            id: id,
-          },
-        }
-      );
+      await UnempVeriModel.update(params, {
+        where: {
+          id: id,
+        },
+      });
     } catch (err) {
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `更新数据异常:${err}`);
     }
