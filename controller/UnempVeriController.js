@@ -121,10 +121,10 @@ class UnempVeriController extends BaseController {
     if (jiezhen) {
       params.jiezhen = jiezhen;
     }
-    if (checknote) {
+    if (checknote !== null) {
       params.checknote = checknote;
     }
-    if (reviewnote) {
+    if (reviewnote !== null) {
       params.reviewnote = reviewnote;
     }
     try {
