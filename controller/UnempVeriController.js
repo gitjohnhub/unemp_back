@@ -17,14 +17,14 @@ class UnempVeriController extends BaseController {
       noindex,
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
-    let pageOptions = {}
+    let pageOptions = {};
     if (!noindex) {
-        // 进行分页
-        pageOptions = {
-          offset: skipIndex,
-          limit: page.pageSize
-        };
-      }
+      // 进行分页
+      pageOptions = {
+        offset: skipIndex,
+        limit: page.pageSize,
+      };
+    }
     const where = {};
     if (personID) {
       where.personID = personID;
@@ -50,12 +50,12 @@ class UnempVeriController extends BaseController {
     if (checkoperators) {
       where.checkoperator = { [Op.or]: checkoperators };
     }
-    log4js.debug(ctx.request.body)
+    log4js.debug(ctx.request.body);
     try {
       const { count, rows } = await UnempVeriModel.findAndCountAll({
         where,
         order: [['createtime', 'DESC']],
-        ...pageOptions
+        ...pageOptions,
       });
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '查询成功', {
         page: {
@@ -103,6 +103,8 @@ class UnempVeriController extends BaseController {
   static async updateUnempVeriData(ctx) {
     const {
       id,
+      personName,
+      personID,
       jiezhen,
       checknote,
       verification,
@@ -113,6 +115,12 @@ class UnempVeriController extends BaseController {
     } = ctx.request.body;
     log4js.debug(ctx.request.body);
     const params = {};
+    if (personID) {
+      params.personID = personID;
+    }
+    if (personName) {
+      params.personName = personName;
+    }
     if (alreadydelete) {
       params.alreadydelete = alreadydelete;
     }
@@ -134,6 +142,7 @@ class UnempVeriController extends BaseController {
     if (reviewnote !== null) {
       params.reviewnote = reviewnote;
     }
+    console.log('params===>', params);
     try {
       await UnempVeriModel.update(params, {
         where: {

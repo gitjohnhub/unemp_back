@@ -71,9 +71,6 @@ class XiechaController extends BaseController {
     if (alreadydelete) {
       params.alreadydelete = alreadydelete;
     }
-    if (checkoperator) {
-        params.checkoperator = checkoperator;
-    }
     if (verification) {
         params.verification = verification;
       }
