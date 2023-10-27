@@ -14,8 +14,17 @@ class UnempVeriController extends BaseController {
       checkoperators,
       alreadydelete,
       verification,
+      noindex,
     } = ctx.request.body;
-    console.log('ctx====>>', ctx.request.body);
+    const { page, skipIndex } = util.pager(ctx.request.body);
+    let pageOptions = {}
+    if (!noindex) {
+        // 进行分页
+        pageOptions = {
+          offset: skipIndex,
+          limit: page.pageSize
+        };
+      }
     const where = {};
     if (personID) {
       where.personID = personID;
@@ -41,14 +50,12 @@ class UnempVeriController extends BaseController {
     if (checkoperators) {
       where.checkoperator = { [Op.or]: checkoperators };
     }
-    const { page, skipIndex } = util.pager(ctx.request.body);
-    log4js.debug(`page:${page.current},skipindex:${skipIndex}`);
+    log4js.debug(ctx.request.body)
     try {
       const { count, rows } = await UnempVeriModel.findAndCountAll({
         where,
         order: [['createtime', 'DESC']],
-        offset: skipIndex,
-        limit: page.pageSize,
+        ...pageOptions
       });
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '查询成功', {
         page: {
