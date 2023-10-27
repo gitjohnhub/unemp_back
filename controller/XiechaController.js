@@ -14,7 +14,6 @@ class XiechaController extends BaseController {
         where.personName = personName;
       }
     const { page, skipIndex } = util.pager(ctx.request.body);
-    log4js.debug(`page:${page.current},skipindex:${skipIndex}`);
     try {
       const { count, rows } = await XiechaModel.findAndCountAll({
         where,
