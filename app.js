@@ -8,6 +8,7 @@ const logger = require('koa-logger')
 const koa_jwt = require('koa-jwt')
 const index = require('./routes/index')
 const users = require('./routes/users')
+const contacts = require('./routes/contacts')
 const unempVeri = require('./routes/unempVeri')
 const BaseController = require('./controller/BaseController')
 const log4j = require('./utils/log4j')
@@ -77,7 +78,8 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
-app.use(unempVeri.routes(), users.allowedMethods())
+app.use(unempVeri.routes(), unempVeri.allowedMethods())
+app.use(contacts.routes(), contacts.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

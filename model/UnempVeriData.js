@@ -1,6 +1,6 @@
 const {DataTypes} = require('sequelize')
 const sequelize = require('../database/db')
-const UnempVeriData = sequelize.define('unempveri', {
+const UnempVeriData = sequelize.define('unempveri_copy1', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
