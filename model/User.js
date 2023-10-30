@@ -13,6 +13,7 @@ const User = sequelize.define('user', {
     username: DataTypes.STRING,
     account:DataTypes.STRING,
     password:DataTypes.STRING,
+    checkObject:DataTypes.STRING,
     role_id: {
         type:DataTypes.INTEGER,
         defaultValue:1
@@ -22,5 +23,7 @@ const User = sequelize.define('user', {
         defaultValue:1
     }
 })
+User.sync({ alter: true })
+
 
 module.exports = User

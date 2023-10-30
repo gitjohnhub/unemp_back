@@ -17,8 +17,7 @@ const UnempVeriData = sequelize.define('unempveri_copy1', {
     alreadydelete: {
         type:DataTypes.TINYINT,
         defaultValue:1
-    }
-        ,
+    },
     createtime: {
         type:DataTypes.DATE,
         defaultValue: DataTypes.NOW,

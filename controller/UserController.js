@@ -13,8 +13,8 @@ class UserController extends BaseController {
       if (user) {
         log4js.debug(user)
         const token = jwt.sign({ data: user.dataValues }, 'jiading', { expiresIn: 60 * 600 });
-        const {id,username,account,role_id,status} = user
-        const data = {id,username,account,role_id,status}
+        const {id,username,account,role_id,status,checkObject} = user
+        const data = {id,username,account,role_id,status,checkObject}
         log4js.debug(token)
         data.token = token;
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS,'登陆成功',data);
@@ -35,7 +35,7 @@ class UserController extends BaseController {
     try{
         const {count,rows} = await User.findAndCountAll({
             where,
-            attributes: ['id', 'userName','account','role_id','status'],
+            attributes: ['id', 'userName','account','role_id','status','checkObject'],
             order: [['id', 'DESC']],
         })
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS,'查询成功', {
@@ -52,7 +52,7 @@ class UserController extends BaseController {
   static async addUser(ctx) {
     log4js.info('post register success');
     try {
-      const { username, account, password } = ctx.request.body;
+      const { username, account, password ,checkObject} = ctx.request.body;
       const md5_userPwd = md5(password);
       const existUser = await User.findOne({ where: { username: username } });
       if (existUser === null) {
@@ -60,6 +60,7 @@ class UserController extends BaseController {
           account,
           password: md5_userPwd,
           username,
+          checkObject
         });
         await newUser
           .save()
