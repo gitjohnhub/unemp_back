@@ -12,7 +12,7 @@ class UserController extends BaseController {
       const user = await User.findOne({ where: { account: account,password:md5_userPwd } });
       if (user) {
         log4js.debug(user)
-        const token = jwt.sign({ data: user.dataValues }, 'jiading', { expiresIn: 60 * 600 });
+        const token = jwt.sign({ data: user.dataValues }, 'jiading', { expiresIn: '7 days' });
         const {id,username,account,role_id,status,checkObject} = user
         const data = {id,username,account,role_id,status,checkObject}
         log4js.debug(token)
