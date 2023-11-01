@@ -1,6 +1,6 @@
 const BaseController = require('./BaseController');
 const UnempVeriModel = require('../model/UnempVeriData');
-const log4js = require('../utils/log4j');
+const log4js = require('../utils/log4js');
 const util = require('../utils/util');
 const { Op } = require('sequelize');
 class UnempVeriController extends BaseController {
@@ -50,7 +50,6 @@ class UnempVeriController extends BaseController {
     if (checkoperators) {
       where.checkoperator = { [Op.or]: checkoperators };
     }
-    log4js.debug(ctx.request.body);
     try {
       const { count, rows } = await UnempVeriModel.findAndCountAll({
         where,
@@ -73,7 +72,7 @@ class UnempVeriController extends BaseController {
    * @param {*} ctx
    */
   static async addUnempVeriData(ctx) {
-    log4js.debug(ctx.request.body);
+    log4js.debug('add====>',ctx.request.body);
     try {
       await UnempVeriModel.create(ctx.request.body);
     } catch (e) {
@@ -83,7 +82,7 @@ class UnempVeriController extends BaseController {
   }
   // TODO
   static async deleteUnempVeriData(ctx) {
-    log4js.debug(ctx.request.body);
+    // log4js.debug(ctx.request.body);
     const { id } = ctx.request.body;
     try {
       await UnempVeriModel.update(
@@ -113,7 +112,7 @@ class UnempVeriController extends BaseController {
       alreadydelete,
       checkoperator,
     } = ctx.request.body;
-    log4js.debug(ctx.request.body);
+    log4js.debug('update====>',ctx.request.body);
     const params = {};
     if (personID) {
       params.personID = personID;
@@ -142,7 +141,6 @@ class UnempVeriController extends BaseController {
     if (reviewnote !== null) {
       params.reviewnote = reviewnote;
     }
-    console.log('params===>', params);
     try {
       await UnempVeriModel.update(params, {
         where: {

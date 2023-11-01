@@ -1,6 +1,5 @@
 const BaseController = require('./BaseController');
 const XiechaModel = require('../model/XiechaData');
-const log4js = require('../utils/log4j');
 const util = require('../utils/util');
 const { Op } = require('sequelize');
 class XiechaController extends BaseController {
@@ -37,7 +36,6 @@ class XiechaController extends BaseController {
    * @param {*} ctx
    */
   static async addXiechaData(ctx) {
-    log4js.debug(ctx.request.body);
     try {
       await XiechaModel.create(ctx.request.body);
     } catch (e) {
@@ -47,7 +45,6 @@ class XiechaController extends BaseController {
   }
   // TODO
   static async deleteXiechaData(ctx) {
-    log4js.debug(ctx.request.body);
     const { id } = ctx.request.body;
     try {
       await XiechaModel.update(
@@ -66,7 +63,6 @@ class XiechaController extends BaseController {
   // update
   static async updateXiechaData(ctx) {
     const { id, jiezhen,checknote,verification, reviewoperator, reviewnote ,alreadydelete} = ctx.request.body;
-    log4js.debug(ctx.request.body)
     const params = {};
     if (alreadydelete) {
       params.alreadydelete = alreadydelete;

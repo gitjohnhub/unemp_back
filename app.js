@@ -11,7 +11,6 @@ const users = require('./routes/users')
 const contacts = require('./routes/contacts')
 const unempVeri = require('./routes/unempVeri')
 const BaseController = require('./controller/BaseController')
-const log4j = require('./utils/log4j')
 const util = require('./utils/util')
 // error handler
 onerror(app)
@@ -37,7 +36,6 @@ app.use(async (ctx, next) => {
 
 app.use(async (ctx, next) => {
   await next().catch((err) => {
-    log4j.debug(err)
     if (err.status == '401') {
       ctx.body = BaseController.renderJsonFail(util.CODE.AUTH_ERROR,'Token认证失败,请重新登录');
     } else {

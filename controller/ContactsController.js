@@ -1,6 +1,5 @@
 const BaseController = require('./BaseController');
 const contactModel = require('../model/Contact');
-const log4js = require('../utils/log4j');
 const util = require('../utils/util');
 class ContactController extends BaseController {
   static async getContactData(ctx) {
@@ -39,11 +38,9 @@ class ContactController extends BaseController {
    * @param {*} ctx
    */
   static async addContactData(ctx) {
-    log4js.debug(ctx.request.body);
     try {
       await contactModel.create(ctx.request.body);
     } catch (err) {
-      log4js.debug(err)
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
     }
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
@@ -61,7 +58,6 @@ class ContactController extends BaseController {
         }
       );
     } catch (err) {
-      log4js.debug(err)
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
     }
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
@@ -69,7 +65,6 @@ class ContactController extends BaseController {
   // update
   static async updateContactData(ctx) {
     const { id, title,contactPerson,phoneNum, address, mobileNum ,isPublic,belong} = ctx.request.body;
-    log4js.debug(ctx.request.body)
     const params = {};
     if (title) {
       params.title = title;
