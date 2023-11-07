@@ -15,8 +15,10 @@ class UnempVeriController extends BaseController {
       alreadydelete,
       verification,
       noindex,
+      searchValue,
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
+    console.log(ctx.request.body)
     let pageOptions = {};
     if (!noindex) {
       // 进行分页
@@ -26,6 +28,10 @@ class UnempVeriController extends BaseController {
       };
     }
     const where = {};
+    if (searchValue){
+      console.log('searchValue==>',searchValue)
+      where.personID = {[Op.substring]: searchValue}
+    }
     if (personID) {
       where.personID = personID;
     }
@@ -56,6 +62,7 @@ class UnempVeriController extends BaseController {
         order: [['createtime', 'DESC']],
         ...pageOptions,
       });
+      console.log('rows==========>',rows)
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '查询成功', {
         page: {
           ...page,
