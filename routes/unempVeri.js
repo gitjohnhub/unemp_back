@@ -1,6 +1,8 @@
 const router = require('koa-router')()
 const UnempVeriController = require("../controller/UnempVeriController");
 const XiechaController = require('../controller/XiechaController');
+const ZhuanyiController = require('../controller/ZhuanyiController');
+const ProvinceController = require('../controller/ProvinceController');
 router.prefix('/api')
 
 // 失业金
@@ -13,5 +15,12 @@ router.post('/updateUnempVeriData',UnempVeriController.updateUnempVeriData )
 router.post('/getXiechaData',XiechaController.getXiechaData )
 router.post('/addXiechaData',XiechaController.addXiechaData )
 router.post('/updateXiechaData',XiechaController.updateXiechaData )
+
+// 转移
+router.post('/getZhuanyiData',ZhuanyiController.getZhuanyiData )
+router.post('/addZhuanyiData',ZhuanyiController.addZhuanyiData )
+router.post('/updateZhuanyiData',ZhuanyiController.updateZhuanyiData )
+//地区数据
+router.post('/getProvinceData',ProvinceController.getProvinceData )
 
 module.exports = router
