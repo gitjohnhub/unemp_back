@@ -34,6 +34,9 @@ class ZhuanyiController extends BaseController {
     if (personID) {
       where.personID = personID;
     }
+    if (payDate) {
+      where.payDate = payDate;
+    }
     if (isDeleted) {
       where.isDeleted = isDeleted;
     }
