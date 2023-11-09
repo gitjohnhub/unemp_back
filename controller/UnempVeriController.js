@@ -18,7 +18,6 @@ class UnempVeriController extends BaseController {
       searchValue,
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
-    console.log(ctx.request.body)
     let pageOptions = {};
     if (!noindex) {
       // 进行分页
@@ -29,7 +28,6 @@ class UnempVeriController extends BaseController {
     }
     const where = {};
     if (searchValue){
-      console.log('searchValue==>',searchValue)
       where.personID = {[Op.substring]: searchValue}
     }
     if (personID) {
@@ -62,7 +60,6 @@ class UnempVeriController extends BaseController {
         order: [['createtime', 'DESC']],
         ...pageOptions,
       });
-      console.log('rows==========>',rows)
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '查询成功', {
         page: {
           ...page,
@@ -93,7 +90,7 @@ class UnempVeriController extends BaseController {
     const { id } = ctx.request.body;
     try {
       await UnempVeriModel.update(
-        { alreadydelete: 2 },
+        { alreadydelete: 0 },
         {
           where: {
             id: id,
@@ -107,6 +104,7 @@ class UnempVeriController extends BaseController {
   }
   // update
   static async updateUnempVeriData(ctx) {
+    console.log('update====>',ctx.request.body);
     const {
       id,
       personName,
@@ -119,7 +117,6 @@ class UnempVeriController extends BaseController {
       alreadydelete,
       checkoperator,
     } = ctx.request.body;
-    log4js.debug('update====>',ctx.request.body);
     const params = {};
     if (personID) {
       params.personID = personID;
@@ -127,7 +124,7 @@ class UnempVeriController extends BaseController {
     if (personName) {
       params.personName = personName;
     }
-    if (alreadydelete) {
+    if (alreadydelete !== null) {
       params.alreadydelete = alreadydelete;
     }
     if (checkoperator) {
@@ -148,6 +145,7 @@ class UnempVeriController extends BaseController {
     if (reviewnote !== null) {
       params.reviewnote = reviewnote;
     }
+    console.log('params===>',params)
     try {
       await UnempVeriModel.update(params, {
         where: {
