@@ -22,7 +22,7 @@ const ZhuanyiData = sequelize.define('zhuanyi', {
     reviewoperator:DataTypes.STRING,
     isDeleted:{
       type:DataTypes.STRING,
-      defaultValue:'0',
+      defaultValue:'1',
     },
     payMonth:DataTypes.STRING
 

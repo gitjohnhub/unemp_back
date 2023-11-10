@@ -2,7 +2,7 @@ const BaseController = require('./BaseController');
 const ZhuanyiModel = require('../model/ZhuanyiData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
-const { Op } = require('sequelize');
+const { Op,Sequelize } = require('sequelize');
 class ZhuanyiController extends BaseController {
   static async getZhuanyiData(ctx) {
     const {
@@ -16,7 +16,7 @@ class ZhuanyiController extends BaseController {
       checkoperator,
       noindex,
       searchValue,
-      payMonth
+      payMonth,
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
@@ -28,13 +28,12 @@ class ZhuanyiController extends BaseController {
       };
     }
     const where = {};
-    if (payMonth){
+    if (payMonth) {
       where.payMonth = payMonth;
-
     }
-    if (searchValue){
-      console.log('searchValue==>',searchValue)
-      where.personID = {[Op.substring]: searchValue}
+    if (searchValue) {
+      console.log('searchValue==>', searchValue);
+      where.personID = { [Op.substring]: searchValue };
     }
     if (personID) {
       where.personID = personID;
@@ -51,7 +50,7 @@ class ZhuanyiController extends BaseController {
     if (fromArea) {
       where.fromArea = fromArea;
     }
-    if (status) {
+    if (status != null) {
       where.status = status;
     }
     if (isOnlyTransferRelation) {
@@ -82,7 +81,7 @@ class ZhuanyiController extends BaseController {
    * @param {*} ctx
    */
   static async addZhuanyiData(ctx) {
-    log4js.debug('add====>',ctx.request.body);
+    log4js.debug('add====>', ctx.request.body);
     try {
       await ZhuanyiModel.create(ctx.request.body);
     } catch (e) {
@@ -90,6 +89,31 @@ class ZhuanyiController extends BaseController {
     }
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
   }
+  static async getZhuanyiDataCal(ctx) {
+    let total = 0
+    await ZhuanyiModel.findAll({
+      where:{
+        isDeleted: '1'},
+      attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
+      group: ['status'],
+    })
+      .then((results) => {
+
+        results.forEach((result) => {
+          total += result.getDataValue('count');
+        });
+        results.push({
+          status: '8',
+          count: total
+        })
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据',results);
+
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+
   // TODO
   static async deleteZhuanyiData(ctx) {
     // log4js.debug(ctx.request.body);
@@ -123,12 +147,12 @@ class ZhuanyiController extends BaseController {
       isDeleted,
       payMonth,
     } = ctx.request.body;
-    log4js.debug('update====>',ctx.request.body);
+    log4js.debug('update====>', ctx.request.body);
     const params = {};
     if (personID) {
       params.personID = personID;
     }
-    if (payMonth){
+    if (payMonth) {
       where.payMonth = payMonth;
     }
     if (personName) {

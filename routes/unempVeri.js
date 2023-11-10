@@ -20,6 +20,7 @@ router.post('/updateXiechaData',XiechaController.updateXiechaData )
 router.post('/getZhuanyiData',ZhuanyiController.getZhuanyiData )
 router.post('/addZhuanyiData',ZhuanyiController.addZhuanyiData )
 router.post('/updateZhuanyiData',ZhuanyiController.updateZhuanyiData )
+router.post('/getZhuanyiDataCal',ZhuanyiController.getZhuanyiDataCal )
 //地区数据
 router.post('/getProvinceData',ProvinceController.getProvinceData )
 
