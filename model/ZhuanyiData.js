@@ -23,7 +23,8 @@ const ZhuanyiData = sequelize.define('zhuanyi', {
     isDeleted:{
       type:DataTypes.STRING,
       defaultValue:'0',
-    }
+    },
+    payMonth:DataTypes.STRING
 
 })
 ZhuanyiData.sync({ alter: true })

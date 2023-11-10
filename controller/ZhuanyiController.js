@@ -16,6 +16,7 @@ class ZhuanyiController extends BaseController {
       checkoperator,
       noindex,
       searchValue,
+      payMonth
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
@@ -27,6 +28,10 @@ class ZhuanyiController extends BaseController {
       };
     }
     const where = {};
+    if (payMonth){
+      where.payMonth = payMonth;
+
+    }
     if (searchValue){
       console.log('searchValue==>',searchValue)
       where.personID = {[Op.substring]: searchValue}
@@ -116,11 +121,15 @@ class ZhuanyiController extends BaseController {
       isOnlyTransferRelation,
       note,
       isDeleted,
+      payMonth,
     } = ctx.request.body;
     log4js.debug('update====>',ctx.request.body);
     const params = {};
     if (personID) {
       params.personID = personID;
+    }
+    if (payMonth){
+      where.payMonth = payMonth;
     }
     if (personName) {
       params.personName = personName;
