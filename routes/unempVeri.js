@@ -3,6 +3,7 @@ const UnempVeriController = require("../controller/UnempVeriController");
 const XiechaController = require('../controller/XiechaController');
 const ZhuanyiController = require('../controller/ZhuanyiController');
 const ProvinceController = require('../controller/ProvinceController');
+const handleTersseractController = require('../controller/HandleTesseractController');
 router.prefix('/api')
 
 // 失业金
@@ -23,5 +24,6 @@ router.post('/updateZhuanyiData',ZhuanyiController.updateZhuanyiData )
 router.post('/getZhuanyiDataCal',ZhuanyiController.getZhuanyiDataCal )
 //地区数据
 router.post('/getProvinceData',ProvinceController.getProvinceData )
+router.post('/handleTesseract',handleTersseractController.handleTersseract)
 
 module.exports = router
