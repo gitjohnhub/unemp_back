@@ -43,7 +43,7 @@ app.use(async (ctx, next) => {
     }
   });
 });
-请求认证
+// 请求认证
 app.use(
   koa_jwt({ secret: 'jiading' }).unless({
     path: [/^\/api\/users\/login/],
