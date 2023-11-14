@@ -12,7 +12,6 @@ class UnempVeriController extends BaseController {
       endDate,
       monthSelect,
       checkoperators,
-      alreadydelete,
       verification,
       noindex,
       searchValue,
@@ -33,23 +32,18 @@ class UnempVeriController extends BaseController {
     if (personID) {
       where.personID = personID;
     }
-    if (alreadydelete) {
-      where.alreadydelete = alreadydelete;
-    }
     if (verification) {
       where.verification = verification;
     }
     if (monthSelect) {
-      where.createtime = { [Op.between]: monthSelect };
+      console.log(monthSelect)
+      where.createtime = { [Op.between]: [monthSelect[0].slice(0,10),monthSelect[1].slice(0,10)] };
     }
     if (personName) {
       where.personName = personName;
     }
-    if (startDate) {
-      where.createtime = { [Op.gte]: startDate };
-    }
     if (endDate) {
-      where.createtime = { [Op.lte]: endDate };
+      where.createtime = { [Op.between]: [startDate,endDate] };
     }
     if (checkoperators) {
       where.checkoperator = { [Op.or]: checkoperators };
@@ -79,29 +73,12 @@ class UnempVeriController extends BaseController {
     log4js.debug('add====>',ctx.request.body);
     try {
       await UnempVeriModel.create(ctx.request.body);
-    } catch (e) {
+    } catch (err) {
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
     }
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
   }
-  // TODO
-  static async deleteUnempVeriData(ctx) {
-    // log4js.debug(ctx.request.body);
-    const { id } = ctx.request.body;
-    try {
-      await UnempVeriModel.update(
-        { alreadydelete: 0 },
-        {
-          where: {
-            id: id,
-          },
-        }
-      );
-    } catch (e) {
-      ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
-    }
-    ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
-  }
+
   // update
   static async updateUnempVeriData(ctx) {
     console.log('update====>',ctx.request.body);
@@ -114,7 +91,6 @@ class UnempVeriController extends BaseController {
       verification,
       reviewoperator,
       reviewnote,
-      alreadydelete,
       checkoperator,
     } = ctx.request.body;
     const params = {};
@@ -123,9 +99,6 @@ class UnempVeriController extends BaseController {
     }
     if (personName) {
       params.personName = personName;
-    }
-    if (alreadydelete !== null) {
-      params.alreadydelete = alreadydelete;
     }
     if (checkoperator) {
       params.checkoperator = checkoperator;

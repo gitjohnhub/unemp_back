@@ -14,16 +14,14 @@ const UnempVeriData = sequelize.define('unempveri_copy1', {
     checkoperator: DataTypes.STRING,
     checknote: DataTypes.STRING,
     reviewnote: DataTypes.STRING,
-    alreadydelete: {
-        type:DataTypes.TINYINT,
-        defaultValue:1
-    },
     createtime: {
         type:DataTypes.DATE,
         defaultValue: DataTypes.NOW,
         timezone: '+08:00'
     }
 })
+UnempVeriData.sync({ alter: true })
+
 
 module.exports = UnempVeriData
 

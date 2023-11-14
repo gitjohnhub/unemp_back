@@ -9,7 +9,6 @@ router.prefix('/api')
 // 失业金
 router.post('/unempVeriAll',UnempVeriController.getUnempVeriData )
 router.post('/addUnempVeriData',UnempVeriController.addUnempVeriData )
-router.post('/deleteUnempVeriData',UnempVeriController.deleteUnempVeriData )
 router.post('/updateUnempVeriData',UnempVeriController.updateUnempVeriData )
 
 // 外省市协查
