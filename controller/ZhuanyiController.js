@@ -17,6 +17,7 @@ class ZhuanyiController extends BaseController {
       noindex,
       searchValue,
       payMonth,
+      pay
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
@@ -34,6 +35,10 @@ class ZhuanyiController extends BaseController {
     if (searchValue) {
       console.log('searchValue==>', searchValue);
       where.personID = { [Op.substring]: searchValue };
+    }
+    if (pay) {
+      console.log('searchValue==>', pay);
+      where.pay = { [Op.substring]: pay };
     }
     if (personID) {
       where.personID = personID;
