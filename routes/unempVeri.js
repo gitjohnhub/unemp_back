@@ -4,6 +4,7 @@ const XiechaController = require('../controller/XiechaController');
 const ZhuanyiController = require('../controller/ZhuanyiController');
 const ProvinceController = require('../controller/ProvinceController');
 const handleTersseractController = require('../controller/HandleTesseractController');
+const YanchangController = require('../controller/YanchangController');
 router.prefix('/api')
 
 // 失业金
@@ -21,6 +22,12 @@ router.post('/getZhuanyiData',ZhuanyiController.getZhuanyiData )
 router.post('/addZhuanyiData',ZhuanyiController.addZhuanyiData )
 router.post('/updateZhuanyiData',ZhuanyiController.updateZhuanyiData )
 router.post('/getZhuanyiDataCal',ZhuanyiController.getZhuanyiDataCal )
+
+// 延长
+router.post('/getYanchangData',YanchangController.getYanchangData )
+router.post('/addYanchangData',YanchangController.addYanchangData )
+router.post('/updateYanchangData',YanchangController.updateYanchangData )
+router.post('/getYanchangDataCal',YanchangController.getYanchangDataCal )
 //地区数据
 router.post('/getProvinceData',ProvinceController.getProvinceData )
 router.post('/handleTesseract',handleTersseractController.handleTersseract)
