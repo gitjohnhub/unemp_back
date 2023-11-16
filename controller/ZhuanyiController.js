@@ -33,12 +33,18 @@ class ZhuanyiController extends BaseController {
       where.payMonth = payMonth;
     }
     if (searchValue) {
-      console.log('searchValue==>', searchValue);
-      where.personID = { [Op.substring]: searchValue };
-    }
-    if (pay) {
-      console.log('searchValue==>', pay);
-      where.pay = { [Op.substring]: pay };
+
+      if (searchValue.length == 18){
+        where.personID = searchValue;
+      }else if (searchValue.length !== 18 && /^[0-9]+$/.test(searchValue)){
+        console.log('pay==>', searchValue);
+        where.pay = { [Op.substring]: searchValue };
+        console.log('where==>', where);
+      }else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+        where.personName = { [Op.substring]: searchValue };
+      }else{
+        console.log('searchValue==>', searchValue);
+      }
     }
     if (personID) {
       where.personID = personID;
