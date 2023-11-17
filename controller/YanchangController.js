@@ -77,17 +77,15 @@ class YanchangController extends BaseController {
   static async getYanchangDataCal(ctx) {
     let total = 0
     await YanchangModel.findAll({
-      where:{
-        status: '1'},
       attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
-      group: ['jiezhen'],
+      group: ['status'],
     })
       .then((results) => {
         results.forEach((result) => {
           total += result.getDataValue('count');
         });
         results.push({
-          status: '8',
+          status: '5',
           count: total
         })
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据',results);
