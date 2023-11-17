@@ -10,6 +10,7 @@ class YanchangController extends BaseController {
       status,
       jiezhen,
       checkoperator,
+      monthSelect,
       searchValue,
       noindex
     } = ctx.request.body;
@@ -25,6 +26,10 @@ class YanchangController extends BaseController {
     const where = {};
     if (jiezhen) {
       where.jiezhen = jiezhen;
+    }
+    if (monthSelect){
+      console.log(monthSelect)
+      where.createtime = { [Op.between]: [monthSelect[0].slice(0,10),monthSelect[1].slice(0,10)] };
     }
     if (searchValue) {
       if (searchValue.length == 18){
