@@ -29,6 +29,7 @@ router.post('/getYanchangData',YanchangController.getYanchangData )
 router.post('/addYanchangData',YanchangController.addYanchangData )
 router.post('/updateYanchangData',YanchangController.updateYanchangData )
 router.post('/getYanchangDataCal',YanchangController.getYanchangDataCal )
+router.post('/getYanchangByJiezhen',YanchangController.getYanchangByJiezhen )
 // 农民
 router.post('/getNongbuData',NongbuController.getNongbuData )
 router.post('/addNongbuData',NongbuController.addNongbuData )

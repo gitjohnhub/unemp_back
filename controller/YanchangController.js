@@ -2,18 +2,11 @@ const BaseController = require('./BaseController');
 const YanchangModel = require('../model/YanchangData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
-const { Op,Sequelize } = require('sequelize');
+const { Op, Sequelize, where } = require('sequelize');
 class YanchangController extends BaseController {
   static async getYanchangData(ctx) {
-    const {
-      personID,
-      status,
-      jiezhen,
-      checkoperator,
-      monthSelect,
-      searchValue,
-      noindex
-    } = ctx.request.body;
+    const { personID, status, jiezhen, checkoperator, monthSelect, searchValue, noindex } =
+      ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
     if (!noindex) {
@@ -27,16 +20,18 @@ class YanchangController extends BaseController {
     if (jiezhen) {
       where.jiezhen = jiezhen;
     }
-    if (monthSelect){
-      console.log(monthSelect)
-      where.createtime = { [Op.between]: [monthSelect[0].slice(0,10),monthSelect[1].slice(0,10)] };
+    if (monthSelect) {
+      console.log(monthSelect);
+      where.createtime = {
+        [Op.between]: [monthSelect[0].slice(0, 10), monthSelect[1].slice(0, 10)],
+      };
     }
     if (searchValue) {
-      if (searchValue.length == 18){
+      if (searchValue.length == 18) {
         where.personID = searchValue;
-      }else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
         where.personName = { [Op.substring]: searchValue };
-      }else{
+      } else {
         console.log('searchValue==>', searchValue);
       }
     }
@@ -71,7 +66,7 @@ class YanchangController extends BaseController {
    * @param {*} ctx
    */
   static async addYanchangData(ctx) {
-    console.log(ctx.request.body)
+    console.log(ctx.request.body);
     try {
       await YanchangModel.create(ctx.request.body);
     } catch (e) {
@@ -80,7 +75,7 @@ class YanchangController extends BaseController {
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
   }
   static async getYanchangDataCal(ctx) {
-    let total = 0
+    let total = 0;
     await YanchangModel.findAll({
       attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
       group: ['status'],
@@ -91,10 +86,39 @@ class YanchangController extends BaseController {
         });
         results.push({
           status: '5',
-          count: total
-        })
-        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据',results);
-
+          count: total,
+        });
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+  static async getYanchangByJiezhen(ctx) {
+    const { monthSelect } = ctx.request.body;
+    console.log('month==>',monthSelect)
+    const where = {};
+    if (monthSelect) {
+      console.log(monthSelect);
+      where.createtime = {
+        [Op.between]: monthSelect,
+      };
+    }
+    let total = 0;
+    await YanchangModel.findAll({
+      where,
+      attributes: ['jiezhen', [Sequelize.fn('COUNT', Sequelize.col('jiezhen')), 'count']],
+      group: ['jiezhen'],
+    })
+      .then((results) => {
+        results.forEach((result) => {
+          total += result.getDataValue('count');
+        });
+        results.push({
+          jiezhen: '全部',
+          count: total,
+        });
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
       })
       .catch((error) => {
         console.error('Error:', error);
