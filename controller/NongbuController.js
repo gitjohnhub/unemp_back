@@ -2,18 +2,11 @@ const BaseController = require('./BaseController');
 const NongbuModel = require('../model/NongbuData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
-const { Op,Sequelize } = require('sequelize');
+const { Op, Sequelize } = require('sequelize');
 class NongbuController extends BaseController {
   static async getNongbuData(ctx) {
-    const {
-      personID,
-      status,
-      jiezhen,
-      checkoperator,
-      monthSelect,
-      searchValue,
-      noindex
-    } = ctx.request.body;
+    const { personID, status, jiezhen, checkoperator, monthSelect, searchValue, noindex } =
+      ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
     if (!noindex) {
@@ -27,16 +20,18 @@ class NongbuController extends BaseController {
     if (jiezhen) {
       where.jiezhen = jiezhen;
     }
-    if (monthSelect){
-      console.log(monthSelect)
-      where.createtime = { [Op.between]: [monthSelect[0].slice(0,10),monthSelect[1].slice(0,10)] };
+    if (monthSelect) {
+      console.log(monthSelect);
+      where.createtime = {
+        [Op.between]: [monthSelect[0].slice(0, 10), monthSelect[1].slice(0, 10)],
+      };
     }
     if (searchValue) {
-      if (searchValue.length == 18){
+      if (searchValue.length == 18) {
         where.personID = searchValue;
-      }else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
         where.personName = { [Op.substring]: searchValue };
-      }else{
+      } else {
         console.log('searchValue==>', searchValue);
       }
     }
@@ -71,7 +66,7 @@ class NongbuController extends BaseController {
    * @param {*} ctx
    */
   static async addNongbuData(ctx) {
-    console.log(ctx.request.body)
+    console.log(ctx.request.body);
     try {
       await NongbuModel.create(ctx.request.body);
     } catch (e) {
@@ -80,7 +75,7 @@ class NongbuController extends BaseController {
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
   }
   static async getNongbuDataCal(ctx) {
-    let total = 0
+    let total = 0;
     await NongbuModel.findAll({
       attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
       group: ['status'],
@@ -91,27 +86,26 @@ class NongbuController extends BaseController {
         });
         results.push({
           status: '5',
-          count: total
-        })
-        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据',results);
-
+          count: total,
+        });
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
       })
       .catch((error) => {
         console.error('Error:', error);
       });
   }
   static async getNongbuCalByMonthAndJiezhen(ctx) {
-    const {year} = ctx.request.body
-    const where = {}
-    if(year){
+    const { year } = ctx.request.body;
+    const where = {};
+    if (year) {
       const startDate = new Date(Number(year), 0, 1);
       const endDate = new Date(Number(year) + 1, 0, 1);
-      where.createtime =  {
+      where.createtime = {
         [Op.gte]: startDate,
         [Op.lt]: endDate,
-      }
+      };
     }
-    let total = 0
+    let total = 0;
     try {
       const result = await NongbuModel.findAll({
         where,
@@ -124,13 +118,11 @@ class NongbuController extends BaseController {
       });
 
       console.log(result);
-      ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据',result);
-
-   } catch (error) {
-    console.error('统计查询失败:', error);
+      ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', result);
+    } catch (error) {
+      console.error('统计查询失败:', error);
+    }
   }
-}
-
 
   // TODO
   static async deleteNongbuData(ctx) {
@@ -155,13 +147,14 @@ class NongbuController extends BaseController {
       id,
       personName,
       personID,
+      jiezhen,
       status,
       checkoperator,
       reviewoperator,
       chengPayMonth,
       zhenPayMonth,
       note,
-      wrongTag
+      wrongTag,
     } = ctx.request.body;
     log4js.debug('update====>', ctx.request.body);
     const params = {};
@@ -172,10 +165,10 @@ class NongbuController extends BaseController {
       params.wrongTag = wrongTag;
     }
     if (chengPayMonth) {
-      where.chengPayMonth = chengPayMonth;
+      params.chengPayMonth = chengPayMonth;
     }
     if (zhenPayMonth) {
-      where.zhenPayMonth = zhenPayMonth;
+      params.zhenPayMonth = zhenPayMonth;
     }
     if (personName) {
       params.personName = personName;
@@ -191,6 +184,9 @@ class NongbuController extends BaseController {
     }
     if (note) {
       params.note = note;
+    }
+    if (jiezhen) {
+      params.jiezhen = jiezhen;
     }
 
     try {
