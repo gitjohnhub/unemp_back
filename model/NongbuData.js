@@ -20,6 +20,7 @@ const NongbuData = sequelize.define('nongbu', {
     chengPayMonth: DataTypes.STRING,
     zhenPayMonth:DataTypes.STRING,
     note:DataTypes.STRING,
+    wrongTag:DataTypes.STRING
 
 })
 NongbuData.sync({ alter: true })

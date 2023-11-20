@@ -100,6 +100,37 @@ class NongbuController extends BaseController {
         console.error('Error:', error);
       });
   }
+  static async getNongbuCalByMonthAndJiezhen(ctx) {
+    const {year} = ctx.request.body
+    const where = {}
+    if(year){
+      const startDate = new Date(Number(year), 0, 1);
+      const endDate = new Date(Number(year) + 1, 0, 1);
+      where.createtime =  {
+        [Op.gte]: startDate,
+        [Op.lt]: endDate,
+      }
+    }
+    let total = 0
+    try {
+      const result = await NongbuModel.findAll({
+        where,
+        attributes: [
+          [Sequelize.fn('MONTH', Sequelize.col('createtime')), 'month'], // 提取月份
+          [Sequelize.fn('COUNT', Sequelize.col('jiezhen')), 'count'], // 统计街镇数量
+          'jiezhen', // 包含街镇名称的字段
+        ],
+        group: [Sequelize.fn('MONTH', Sequelize.col('createtime')), 'jiezhen'], // 按月份和街镇分组
+      });
+
+      console.log(result);
+      ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据',result);
+
+   } catch (error) {
+    console.error('统计查询失败:', error);
+  }
+}
+
 
   // TODO
   static async deleteNongbuData(ctx) {
@@ -130,11 +161,15 @@ class NongbuController extends BaseController {
       chengPayMonth,
       zhenPayMonth,
       note,
+      wrongTag
     } = ctx.request.body;
     log4js.debug('update====>', ctx.request.body);
     const params = {};
     if (personID) {
       params.personID = personID;
+    }
+    if (wrongTag) {
+      params.wrongTag = wrongTag;
     }
     if (chengPayMonth) {
       where.chengPayMonth = chengPayMonth;
