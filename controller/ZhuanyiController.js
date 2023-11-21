@@ -2,7 +2,14 @@ const BaseController = require('./BaseController');
 const ZhuanyiModel = require('../model/ZhuanyiData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
-const { Op,Sequelize } = require('sequelize');
+const { Op, Sequelize } = require('sequelize');
+function getFirstAndLastDayOfMonth(dateString) {
+  const [year, month] = dateString.split('-');
+  const firstDay = new Date(year, month - 1, 1);
+  const lastDay = new Date(year, month, 0);
+
+  return [firstDay.toISOString().slice(0, 10), lastDay.toISOString().slice(0, 10)];
+}
 class ZhuanyiController extends BaseController {
   static async getZhuanyiData(ctx) {
     const {
@@ -17,7 +24,7 @@ class ZhuanyiController extends BaseController {
       noindex,
       searchValue,
       payMonth,
-      pay
+      searchDate,
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
@@ -32,17 +39,23 @@ class ZhuanyiController extends BaseController {
     if (payMonth) {
       where.payMonth = payMonth;
     }
-    if (searchValue) {
+    if(searchDate){
+      // pageOptions = {};
+      where.createtime = {
+        [Op.between]: [getFirstAndLastDayOfMonth(searchDate)[0], getFirstAndLastDayOfMonth(searchDate)[1]],
+      };
 
-      if (searchValue.length == 18){
+    }
+    if (searchValue) {
+      if (searchValue.length == 18) {
         where.personID = searchValue;
-      }else if (searchValue.length !== 18 && /^[0-9]+$/.test(searchValue)){
+      } else if (searchValue.length !== 18 && /^[0-9]+$/.test(searchValue)) {
         console.log('pay==>', searchValue);
         where.pay = { [Op.substring]: searchValue };
         console.log('where==>', where);
-      }else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
         where.personName = { [Op.substring]: searchValue };
-      }else{
+      } else {
         console.log('searchValue==>', searchValue);
       }
     }
@@ -95,37 +108,59 @@ class ZhuanyiController extends BaseController {
     log4js.debug('add====>', ctx.request.body);
     try {
       await ZhuanyiModel.create(ctx.request.body);
+      ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
     } catch (e) {
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
     }
-    ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
+  }
+
+  static async getZhuanyiAllDate(ctx) {
+    let months = [];
+    await ZhuanyiModel.findAll({
+      attributes: [
+        [Sequelize.fn('date_format', Sequelize.col('createtime'), '%Y-%m'), 'formattedDate'],
+      ],
+      group: 'formattedDate',
+    })
+      .then((results) => {
+        results.forEach((result) => {
+          months.push(result.getDataValue('formattedDate'));
+        })
+        console.log(months)
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', months);
+        console.log(ctx.body)
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
   static async getZhuanyiDataCal(ctx) {
-    let total = 0
+    let total = 0;
     await ZhuanyiModel.findAll({
-      where:{
-        isDeleted: '1'},
+      where: {
+        isDeleted: '1',
+      },
       attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
       group: ['status'],
     })
       .then((results) => {
-
         results.forEach((result) => {
           total += result.getDataValue('count');
         });
         results.push({
           status: '8',
-          count: total
-        })
-        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据',results);
-
+          count: total,
+        });
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
       })
       .catch((error) => {
         console.error('Error:', error);
       });
   }
 
+
   // TODO
+
   static async deleteZhuanyiData(ctx) {
     // log4js.debug(ctx.request.body);
     const { id } = ctx.request.body;

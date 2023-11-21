@@ -23,6 +23,7 @@ router.post('/getZhuanyiData',ZhuanyiController.getZhuanyiData )
 router.post('/addZhuanyiData',ZhuanyiController.addZhuanyiData )
 router.post('/updateZhuanyiData',ZhuanyiController.updateZhuanyiData )
 router.post('/getZhuanyiDataCal',ZhuanyiController.getZhuanyiDataCal )
+router.post('/getZhuanyiAllDate',ZhuanyiController.getZhuanyiAllDate )
 
 // 延长
 router.post('/getYanchangData',YanchangController.getYanchangData )

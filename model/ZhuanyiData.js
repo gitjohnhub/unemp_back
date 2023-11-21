@@ -31,17 +31,5 @@ const ZhuanyiData = sequelize.define('zhuanyi', {
 
 })
 ZhuanyiData.sync({ alter: true })
-const CalPayMonth = (payMonth) => {
-    if (payMonth) {
-      const numPayMonth = Number(payMonth);
-      if (numPayMonth <= 12) {
-        return numPayMonth * 2175 * 1.5;
-      } else {
-        return 12 * 2175 * 1.5 + (numPayMonth - 12) * 1740 * 1.5;
-      }
-    } else {
-      return 0;
-    }
-  };
 module.exports = ZhuanyiData
 
