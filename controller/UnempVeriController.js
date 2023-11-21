@@ -81,7 +81,6 @@ class UnempVeriController extends BaseController {
 
   // update
   static async updateUnempVeriData(ctx) {
-    console.log('update====>',ctx.request.body);
     const {
       id,
       personName,
@@ -93,31 +92,16 @@ class UnempVeriController extends BaseController {
       reviewnote,
       checkoperator,
     } = ctx.request.body;
-    const params = {};
-    if (personID) {
-      params.personID = personID;
-    }
-    if (personName) {
-      params.personName = personName;
-    }
-    if (checkoperator) {
-      params.checkoperator = checkoperator;
-    }
-    if (verification) {
-      params.verification = verification;
-    }
-    if (reviewoperator) {
-      params.reviewoperator = reviewoperator;
-    }
-    if (jiezhen) {
-      params.jiezhen = jiezhen;
-    }
-    if (checknote !== null) {
-      params.checknote = checknote;
-    }
-    if (reviewnote !== null) {
-      params.reviewnote = reviewnote;
-    }
+    const params = {
+      personName,
+      personID,
+      jiezhen,
+      checknote:checknote !== null ? checknote : '',
+      verification,
+      reviewoperator,
+      reviewnote:reviewnote!== null? reviewnote : '',
+      checkoperator,
+    };
     console.log('params===>',params)
     try {
       await UnempVeriModel.update(params, {
