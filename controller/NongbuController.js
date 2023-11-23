@@ -5,7 +5,7 @@ const util = require('../utils/util');
 const { Op, Sequelize } = require('sequelize');
 class NongbuController extends BaseController {
   static async getNongbuData(ctx) {
-    const { personID, status, jiezhen, checkoperator, monthSelect, searchValue, noindex } =
+    const { personID, status, jiezhen, checkoperator, monthSelect, searchValue, noindex,originalFile,customOrder } =
       ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
@@ -16,12 +16,18 @@ class NongbuController extends BaseController {
         limit: page.pageSize,
       };
     }
+    const order =  [['createtime', 'DESC']]
+    if (customOrder) {
+      order.unshift([customOrder.sortColumn, customOrder.sortRule])
+    }
+    console.log('order===>',order)
+
     const where = {};
+
     if (jiezhen) {
       where.jiezhen = jiezhen;
     }
     if (monthSelect) {
-      console.log(monthSelect);
       where.createtime = {
         [Op.between]: [monthSelect[0].slice(0, 10), monthSelect[1].slice(0, 10)],
       };
@@ -41,13 +47,16 @@ class NongbuController extends BaseController {
     if (status != null) {
       where.status = status;
     }
+    if (originalFile != null) {
+      where.originalFile = originalFile;
+    }
     if (checkoperator) {
       where.checkoperator = checkoperator;
     }
     try {
       const { count, rows } = await NongbuModel.findAndCountAll({
         where,
-        order: [['createtime', 'DESC']],
+        order,
         ...pageOptions,
       });
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '查询成功', {
@@ -89,6 +98,26 @@ class NongbuController extends BaseController {
           count: total,
         });
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+  static async getNongbuAllDate(ctx) {
+    let months = [];
+    await NongbuModel.findAll({
+      attributes: [
+        [Sequelize.fn('date_format', Sequelize.col('createtime'), '%Y-%m'), 'formattedDate'],
+      ],
+      group: 'formattedDate',
+    })
+      .then((results) => {
+        results.forEach((result) => {
+          months.push(result.getDataValue('formattedDate'));
+        })
+        console.log(months)
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', months);
+        console.log(ctx.body)
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -158,11 +187,20 @@ class NongbuController extends BaseController {
       zhenPayMonth,
       note,
       wrongTag,
+      repeatTimes,
+      originalFile
     } = ctx.request.body;
-    log4js.debug('update====>', ctx.request.body);
     const params = {};
     if (personID) {
       params.personID = personID;
+    }
+    if (repeatTimes != null){
+      params.repeatTimes = repeatTimes;
+
+    }
+    if (originalFile != null){
+      params.originalFile = originalFile;
+
     }
     if (wrongTag) {
       params.wrongTag = wrongTag;

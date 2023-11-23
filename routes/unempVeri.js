@@ -37,6 +37,7 @@ router.post('/addNongbuData',NongbuController.addNongbuData )
 router.post('/updateNongbuData',NongbuController.updateNongbuData )
 router.post('/getNongbuDataCal',NongbuController.getNongbuDataCal )
 router.post('/getNongbuCalByMonthAndJiezhen',NongbuController.getNongbuCalByMonthAndJiezhen )
+router.post('/getNongbuAllDate',NongbuController.getNongbuAllDate )
 //地区数据
 router.post('/getProvinceData',ProvinceController.getProvinceData )
 router.post('/handleTesseract',handleTersseractController.handleTersseract)
