@@ -1,12 +1,23 @@
 const BaseController = require('./BaseController');
 const NongbuModel = require('../model/NongbuData');
 const log4js = require('../utils/log4js');
+const getFirstAndLastDayOfMonth = require('../utils/tools')
 const util = require('../utils/util');
 const { Op, Sequelize } = require('sequelize');
 class NongbuController extends BaseController {
   static async getNongbuData(ctx) {
-    const { personID, status, jiezhen, checkoperator, monthSelect, searchValue, noindex,originalFile,customOrder } =
-      ctx.request.body;
+    const {
+      personID,
+      status,
+      jiezhen,
+      checkoperator,
+      monthRangeSelect,
+      monthSelect,
+      searchValue,
+      noindex,
+      originalFile,
+      customOrder,
+    } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
     if (!noindex) {
@@ -16,21 +27,31 @@ class NongbuController extends BaseController {
         limit: page.pageSize,
       };
     }
-    const order =  [['createtime', 'DESC']]
+    const order = [['createtime', 'DESC']];
     if (customOrder) {
-      order.unshift([customOrder.sortColumn, customOrder.sortRule])
+      order.unshift([customOrder.sortColumn, customOrder.sortRule]);
     }
-    console.log('order===>',order)
+    console.log('order===>', order);
 
     const where = {};
+    if (monthSelect) {
+      // pageOptions = {};
+      where.createtime = {
+        [Op.between]: [
+          getFirstAndLastDayOfMonth(monthSelect)[0],
+          getFirstAndLastDayOfMonth(monthSelect)[1],
+        ],
+      };
+    }
 
     if (jiezhen) {
       where.jiezhen = jiezhen;
     }
-    if (monthSelect) {
+    if (monthRangeSelect) {
       where.createtime = {
-        [Op.between]: [monthSelect[0].slice(0, 10), monthSelect[1].slice(0, 10)],
+        [Op.between]: [monthRangeSelect[0].slice(0, 10), monthRangeSelect[1].slice(0, 10)],
       };
+      console.log(where);
     }
     if (searchValue) {
       if (searchValue.length == 18) {
@@ -114,20 +135,20 @@ class NongbuController extends BaseController {
       .then((results) => {
         results.forEach((result) => {
           months.push(result.getDataValue('formattedDate'));
-        })
-        console.log(months)
+        });
+        console.log(months);
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', months);
-        console.log(ctx.body)
+        console.log(ctx.body);
       })
       .catch((error) => {
         console.error('Error:', error);
       });
   }
   static async getNongbuCalByMonthAndJiezhen(ctx) {
-    const { year,wrongTag } = ctx.request.body;
+    const { year, wrongTag } = ctx.request.body;
     const where = {};
-    if(wrongTag){
-      where.wrongTag = wrongTag
+    if (wrongTag) {
+      where.wrongTag = wrongTag;
     }
     if (year) {
       const startDate = new Date(Number(year), 0, 1);
@@ -188,19 +209,17 @@ class NongbuController extends BaseController {
       note,
       wrongTag,
       repeatTimes,
-      originalFile
+      originalFile,
     } = ctx.request.body;
     const params = {};
     if (personID) {
       params.personID = personID;
     }
-    if (repeatTimes != null){
+    if (repeatTimes != null) {
       params.repeatTimes = repeatTimes;
-
     }
-    if (originalFile != null){
+    if (originalFile != null) {
       params.originalFile = originalFile;
-
     }
     if (wrongTag) {
       params.wrongTag = wrongTag;

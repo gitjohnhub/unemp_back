@@ -44,7 +44,6 @@ class ZhuanyiController extends BaseController {
       where.createtime = {
         [Op.between]: [getFirstAndLastDayOfMonth(searchDate)[0], getFirstAndLastDayOfMonth(searchDate)[1]],
       };
-
     }
     if (searchValue) {
       if (searchValue.length == 18) {
