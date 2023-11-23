@@ -1,14 +1,29 @@
 const BaseController = require('./BaseController');
 const YanchangModel = require('../model/YanchangData');
 const log4js = require('../utils/log4js');
+const getFirstAndLastDayOfMonth = require('../utils/tools');
+
 const util = require('../utils/util');
 const { Op, Sequelize, where } = require('sequelize');
 class YanchangController extends BaseController {
   static async getYanchangData(ctx) {
-    const { personID, status, jiezhen, checkoperator, monthSelect, searchValue, noindex } =
-      ctx.request.body;
+    const {
+      personID,
+      status,
+      jiezhen,
+      checkoperator,
+      monthSelect,
+      searchValue,
+      noindex,
+      originalFile,
+      customOrder,
+    } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
+    const order = [['createtime', 'DESC']];
+    if (customOrder) {
+      order.unshift([customOrder.sortColumn, customOrder.sortRule]);
+    }
     if (!noindex) {
       // 进行分页
       pageOptions = {
@@ -20,10 +35,13 @@ class YanchangController extends BaseController {
     if (jiezhen) {
       where.jiezhen = jiezhen;
     }
+    if (originalFile) {
+      where.originalFile = originalFile;
+    }
     if (monthSelect) {
       console.log(monthSelect);
       where.createtime = {
-        [Op.between]: [monthSelect[0].slice(0, 10), monthSelect[1].slice(0, 10)],
+        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
       };
     }
     if (searchValue) {
@@ -47,7 +65,7 @@ class YanchangController extends BaseController {
     try {
       const { count, rows } = await YanchangModel.findAndCountAll({
         where,
-        order: [['createtime', 'DESC']],
+        order,
         ...pageOptions,
       });
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '查询成功', {
@@ -94,15 +112,37 @@ class YanchangController extends BaseController {
         console.error('Error:', error);
       });
   }
+  static async getYanchangAllDate(ctx) {
+    let months = [];
+    await YanchangModel.findAll({
+      attributes: [
+        [Sequelize.fn('date_format', Sequelize.col('createtime'), '%Y-%m'), 'formattedDate'],
+      ],
+      group: 'formattedDate',
+    })
+      .then((results) => {
+        results.forEach((result) => {
+          months.push(result.getDataValue('formattedDate'));
+        });
+        console.log(months);
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', months);
+        console.log(ctx.body);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
   static async getYanchangByJiezhen(ctx) {
-    const { monthSelect } = ctx.request.body;
-    console.log('month==>',monthSelect)
+    const { monthSelect, status } = ctx.request.body;
     const where = {};
     if (monthSelect) {
-      console.log(monthSelect);
+      console.log('monthSelect==>,', monthSelect);
       where.createtime = {
-        [Op.between]: monthSelect,
+        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
       };
+    }
+    if (status != null) {
+      where.status = status;
     }
     let total = 0;
     await YanchangModel.findAll({
@@ -155,14 +195,18 @@ class YanchangController extends BaseController {
       startDate,
       endDate,
       note,
+      originalFile,
     } = ctx.request.body;
-    log4js.debug('update====>', ctx.request.body);
+    console.log('update====>', ctx.request.body);
     const params = {};
     if (personID) {
       params.personID = personID;
     }
+    if (originalFile != null) {
+      params.originalFile = originalFile;
+    }
     if (payMonth) {
-      where.payMonth = payMonth;
+      params.payMonth = payMonth;
     }
     if (personName) {
       params.personName = personName;
@@ -173,7 +217,7 @@ class YanchangController extends BaseController {
     if (reviewoperator) {
       params.reviewoperator = reviewoperator;
     }
-    if (status) {
+    if (status != null) {
       params.status = status;
     }
     if (startDate) {
@@ -185,6 +229,7 @@ class YanchangController extends BaseController {
     if (note) {
       params.note = note;
     }
+    console.log(params);
 
     try {
       await YanchangModel.update(params, {

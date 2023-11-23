@@ -37,10 +37,8 @@ class NongbuController extends BaseController {
     const where = {};
     if (monthSelect) {
       where.createtime = {
-        [Op.between]: [
-          getFirstAndLastDayOfMonth(monthSelect)[0],
-          getFirstAndLastDayOfMonth(monthSelect)[1],
-        ],
+        [Op.between]:
+          getFirstAndLastDayOfMonth(monthSelect),
       };
     }
     console.log(where.createtime)

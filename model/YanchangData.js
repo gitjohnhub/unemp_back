@@ -23,6 +23,8 @@ const YanchangData = sequelize.define('yanchang', {
     },
     endDate:DataTypes.STRING,
     note:DataTypes.STRING,
+    originalFile:DataTypes.STRING,
+
 
 })
 YanchangData.sync({ alter: true })
