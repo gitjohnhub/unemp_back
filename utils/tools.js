@@ -1,7 +1,12 @@
+const moment = require('moment');
 module.exports = function getFirstAndLastDayOfMonth(dateString) {
-  const [year, month] = dateString.split('-');
-  const firstDay = new Date(year, month - 1, 1);
-  const lastDay = new Date(year, month, 0);
+  // const [year, month] = dateString.split('-');
+  const mydate = moment(dateString, 'YYYY-MM');
+  const firstDay = mydate.startOf('month').format('YYYY-MM-DD');
+  const f_lastDay = moment(mydate.endOf('month').format('YYYY-MM-DD')).add(12, 'hours');
+  const lastDay = f_lastDay.format('YYYY-MM-DD HH:mm:ss')
+  console.log('firstDay===>',firstDay)
+  console.log('lastDay===>',lastDay)
 
-  return [firstDay.toISOString().slice(0, 10), lastDay.toISOString().slice(0, 10)];
+  return [firstDay,lastDay];
 }

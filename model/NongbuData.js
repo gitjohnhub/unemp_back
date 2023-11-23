@@ -22,7 +22,8 @@ const NongbuData = sequelize.define('nongbu', {
     note:DataTypes.STRING,
     wrongTag:DataTypes.STRING,
     repeatTimes:DataTypes.STRING,
-    originalFile:DataTypes.STRING
+    originalFile:DataTypes.STRING,
+    cancelUnemp:DataTypes.STRING,
 
 })
 NongbuData.sync({ alter: true })

@@ -17,6 +17,7 @@ class NongbuController extends BaseController {
       noindex,
       originalFile,
       customOrder,
+      cancelUnemp,
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
@@ -35,7 +36,6 @@ class NongbuController extends BaseController {
 
     const where = {};
     if (monthSelect) {
-      // pageOptions = {};
       where.createtime = {
         [Op.between]: [
           getFirstAndLastDayOfMonth(monthSelect)[0],
@@ -43,9 +43,13 @@ class NongbuController extends BaseController {
         ],
       };
     }
+    console.log(where.createtime)
 
     if (jiezhen) {
       where.jiezhen = jiezhen;
+    }
+    if(cancelUnemp ){
+      where.cancelUnemp = cancelUnemp
     }
     if (monthRangeSelect) {
       where.createtime = {
@@ -210,6 +214,7 @@ class NongbuController extends BaseController {
       wrongTag,
       repeatTimes,
       originalFile,
+      cancelUnemp,
     } = ctx.request.body;
     const params = {};
     if (personID) {
@@ -217,6 +222,9 @@ class NongbuController extends BaseController {
     }
     if (repeatTimes != null) {
       params.repeatTimes = repeatTimes;
+    }
+    if (cancelUnemp != null) {
+      params.cancelUnemp = cancelUnemp;
     }
     if (originalFile != null) {
       params.originalFile = originalFile;
