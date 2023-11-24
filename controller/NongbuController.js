@@ -18,6 +18,7 @@ class NongbuController extends BaseController {
       originalFile,
       customOrder,
       cancelUnemp,
+      showRepeat,
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
@@ -42,6 +43,11 @@ class NongbuController extends BaseController {
       };
     }
     console.log(where.createtime)
+    if(showRepeat){
+      where.repeatTimes = {
+        [Op.gte]:1,
+      };
+    }
 
     if (jiezhen) {
       where.jiezhen = jiezhen;
