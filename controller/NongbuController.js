@@ -117,7 +117,7 @@ class NongbuController extends BaseController {
           total += result.getDataValue('count');
         });
         results.push({
-          status: '5',
+          status: '3',
           count: total,
         });
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
