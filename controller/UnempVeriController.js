@@ -3,6 +3,7 @@ const UnempVeriModel = require('../model/UnempVeriData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
 const { Op } = require('sequelize');
+const getFirstAndLastDayOfMonthFromArray = require('../utils/tools')
 class UnempVeriController extends BaseController {
   static async getUnempVeriData(ctx) {
     const {
@@ -15,7 +16,9 @@ class UnempVeriController extends BaseController {
       verification,
       noindex,
       searchValue,
+      isIncludeCheckData,
     } = ctx.request.body;
+    console.log(ctx.request.body)
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
     if (!noindex) {
@@ -26,24 +29,33 @@ class UnempVeriController extends BaseController {
       };
     }
     const where = {};
-    if (searchValue){
-      where.personID = {[Op.substring]: searchValue}
+
+    if (searchValue) {
+      where.personID = { [Op.substring]: searchValue };
     }
     if (personID) {
       where.personID = personID;
     }
     if (verification) {
-      where.verification = verification;
+      if (isIncludeCheckData == 1) {
+        where.verification = [0,1]
+      } else{
+        where.verification = verification;
+      }
     }
     if (monthSelect) {
-      console.log(monthSelect)
-      where.createtime = { [Op.between]: [monthSelect[0].slice(0,10),monthSelect[1].slice(0,10)] };
+      console.log(monthSelect);
+      console.log(getFirstAndLastDayOfMonthFromArray(monthSelect))
+      const dateArray = getFirstAndLastDayOfMonthFromArray(monthSelect)
+      where.createtime = {
+        [Op.between]: [dateArray[0], dateArray[1]],
+      };
     }
     if (personName) {
       where.personName = personName;
     }
     if (endDate) {
-      where.createtime = { [Op.between]: [startDate,endDate] };
+      where.createtime = { [Op.between]: [startDate, endDate] };
     }
     if (checkoperators) {
       where.checkoperator = { [Op.or]: checkoperators };
@@ -70,7 +82,7 @@ class UnempVeriController extends BaseController {
    * @param {*} ctx
    */
   static async addUnempVeriData(ctx) {
-    log4js.debug('add====>',ctx.request.body);
+    log4js.debug('add====>', ctx.request.body);
     try {
       await UnempVeriModel.create(ctx.request.body);
     } catch (err) {
@@ -96,13 +108,13 @@ class UnempVeriController extends BaseController {
       personName,
       personID,
       jiezhen,
-      checknote:checknote !== null ? checknote : '',
+      checknote: checknote !== null ? checknote : '',
       verification,
       reviewoperator,
-      reviewnote:reviewnote!== null? reviewnote : '',
+      reviewnote: reviewnote !== null ? reviewnote : '',
       checkoperator,
     };
-    console.log('params===>',params)
+    console.log('params===>', params);
     try {
       await UnempVeriModel.update(params, {
         where: {

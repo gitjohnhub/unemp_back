@@ -11,3 +11,13 @@ module.exports = function getFirstAndLastDayOfMonth(dateString) {
 
   return [firstDay,lastDay];
 }
+module.exports = function getFirstAndLastDayOfMonthFromArray(dateArray) {
+  console.log('dateArray===>',dateArray)
+  const firstDay = moment(dateArray[0], 'YYYY-MM-DD').format('YYYY-MM-DD');
+  const f_lastDay = moment(dateArray[1], 'YYYY-MM-DD').add(12, 'hours');
+  const lastDay = f_lastDay.format('YYYY-MM-DD HH:mm:ss')
+  console.log('firstDay===>',firstDay)
+  console.log('lastDay===>',lastDay)
+
+  return [firstDay,lastDay];
+}
