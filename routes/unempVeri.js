@@ -6,6 +6,7 @@ const ProvinceController = require('../controller/ProvinceController');
 const handleTersseractController = require('../controller/HandleTesseractController');
 const YanchangController = require('../controller/YanchangController');
 const NongbuController = require('../controller/NongbuController');
+const DutyController = require('../controller/DutyController');
 router.prefix('/api')
 
 // 失业金
@@ -42,5 +43,9 @@ router.post('/getNongbuAllDate',NongbuController.getNongbuAllDate )
 //地区数据
 router.post('/getProvinceData',ProvinceController.getProvinceData )
 router.post('/handleTesseract',handleTersseractController.handleTersseract)
+//值班
+router.post('/getDutyData',DutyController.getDutyData )
+router.post('/addDutyData',DutyController.addDutyData )
+router.post('/updateDutyData',DutyController.updateDutyData)
 
 module.exports = router

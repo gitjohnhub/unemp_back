@@ -32,7 +32,7 @@ class UserController extends BaseController {
         const {count,rows} = await User.findAndCountAll({
             where,
             attributes: ['id', 'userName','account','role_id','status','checkObject'],
-            order: [['id', 'DESC']],
+            order: [['role_id', 'ASC']],
         })
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS,'查询成功', {
             count,
