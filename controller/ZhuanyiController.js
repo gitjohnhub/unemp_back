@@ -185,6 +185,7 @@ class ZhuanyiController extends BaseController {
       personID,
       fromArea,
       status,
+      pay,
       reviewoperator,
       payDate,
       isOnlyTransferRelation,
@@ -198,7 +199,10 @@ class ZhuanyiController extends BaseController {
       params.personID = personID;
     }
     if (payMonth) {
-      where.payMonth = payMonth;
+      params.payMonth = payMonth;
+    }
+    if (pay) {
+      params.pay = pay;
     }
     if (personName) {
       params.personName = personName;
