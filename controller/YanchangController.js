@@ -1,7 +1,7 @@
 const BaseController = require('./BaseController');
 const YanchangModel = require('../model/YanchangData');
 const log4js = require('../utils/log4js');
-const getFirstAndLastDayOfMonth = require('../utils/tools');
+const {getFirstAndLastDayOfMonth} = require('../utils/tools');
 
 const util = require('../utils/util');
 const { Op, Sequelize, where } = require('sequelize');
@@ -41,7 +41,7 @@ class YanchangController extends BaseController {
     if (monthSelect) {
       console.log(monthSelect);
       where.createtime = {
-        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
+        [Op.between]: [getFirstAndLastDayOfMonth(monthSelect)[0],getFirstAndLastDayOfMonth(monthSelect)[1]],
       };
     }
     if (searchValue) {

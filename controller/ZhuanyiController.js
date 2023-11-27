@@ -3,13 +3,7 @@ const ZhuanyiModel = require('../model/ZhuanyiData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
 const { Op, Sequelize } = require('sequelize');
-function getFirstAndLastDayOfMonth(dateString) {
-  const [year, month] = dateString.split('-');
-  const firstDay = new Date(year, month - 1, 1);
-  const lastDay = new Date(year, month, 0);
-
-  return [firstDay.toISOString().slice(0, 10), lastDay.toISOString().slice(0, 10)];
-}
+const {getFirstAndLastDayOfMonth} = require('../utils/tools')
 class ZhuanyiController extends BaseController {
   static async getZhuanyiData(ctx) {
     const {

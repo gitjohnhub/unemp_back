@@ -1,5 +1,5 @@
 const moment = require('moment');
-module.exports = function getFirstAndLastDayOfMonth(dateString) {
+function getFirstAndLastDayOfMonth(dateString) {
   console.log('dateString===>',dateString)
   const mydate = moment(dateString, 'YYYY-MM');
   console.log('mydate===>',mydate)
@@ -11,7 +11,7 @@ module.exports = function getFirstAndLastDayOfMonth(dateString) {
 
   return [firstDay,lastDay];
 }
-module.exports = function getFirstAndLastDayOfMonthFromArray(dateArray) {
+function getFirstAndLastDayOfMonthFromArray(dateArray) {
   console.log('dateArray===>',dateArray)
   const firstDay = moment(dateArray[0], 'YYYY-MM-DD').format('YYYY-MM-DD');
   const f_lastDay = moment(dateArray[1], 'YYYY-MM-DD').add(12, 'hours');
@@ -20,4 +20,8 @@ module.exports = function getFirstAndLastDayOfMonthFromArray(dateArray) {
   console.log('lastDay===>',lastDay)
 
   return [firstDay,lastDay];
+}
+module.exports = {
+  getFirstAndLastDayOfMonth,
+  getFirstAndLastDayOfMonthFromArray
 }

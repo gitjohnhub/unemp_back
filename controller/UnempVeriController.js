@@ -3,7 +3,7 @@ const UnempVeriModel = require('../model/UnempVeriData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
 const { Op } = require('sequelize');
-const getFirstAndLastDayOfMonthFromArray = require('../utils/tools')
+const {getFirstAndLastDayOfMonthFromArray} = require('../utils/tools')
 class UnempVeriController extends BaseController {
   static async getUnempVeriData(ctx) {
     const {
