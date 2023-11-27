@@ -39,7 +39,6 @@ class YanchangController extends BaseController {
       where.originalFile = originalFile;
     }
     if (monthSelect) {
-      console.log(monthSelect);
       where.createtime = {
         [Op.between]: [getFirstAndLastDayOfMonth(monthSelect)[0],getFirstAndLastDayOfMonth(monthSelect)[1]],
       };
@@ -229,8 +228,6 @@ class YanchangController extends BaseController {
     if (note) {
       params.note = note;
     }
-    console.log(params);
-
     try {
       await YanchangModel.update(params, {
         where: {
