@@ -1,4 +1,4 @@
-const {DataTypes} = require('sequelize')
+const {DataTypes, DatabaseError} = require('sequelize')
 const sequelize = require('../database/db')
 const NongbuData = sequelize.define('nongbu', {
     id: {
@@ -14,6 +14,7 @@ const NongbuData = sequelize.define('nongbu', {
         defaultValue: DataTypes.NOW,
         timezone: '+08:00'
     },
+    applyDate:DataTypes.STRING,
     checkoperator:DataTypes.STRING,
     reviewoperator:DataTypes.STRING,
     status:DataTypes.STRING,

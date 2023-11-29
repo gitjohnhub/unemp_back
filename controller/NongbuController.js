@@ -219,6 +219,7 @@ class NongbuController extends BaseController {
       repeatTimes,
       originalFile,
       cancelUnemp,
+      applyDate
     } = ctx.request.body;
     const params = {};
     if (personID) {
@@ -226,6 +227,9 @@ class NongbuController extends BaseController {
     }
     if (repeatTimes != null) {
       params.repeatTimes = repeatTimes;
+    }
+    if (applyDate != null) {
+      params.applyDate = applyDate;
     }
     if (cancelUnemp != null) {
       params.cancelUnemp = cancelUnemp;
