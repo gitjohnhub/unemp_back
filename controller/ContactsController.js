@@ -1,19 +1,32 @@
 const BaseController = require('./BaseController');
 const contactModel = require('../model/Contact');
 const util = require('../utils/util');
+const { Op, Sequelize } = require('sequelize');
+
 class ContactController extends BaseController {
   static async getContactData(ctx) {
-    const { title, isPublic,contactPerson } = ctx.request.body;
+    const { title, isPublic, contactPerson, searchValue, belong } = ctx.request.body;
     const where = {};
     if (title) {
       where.title = title;
     }
+    if (belong) {
+      where.belong = belong;
+    }
+
     if (isPublic) {
-        where.isPublic = isPublic;
+      where.isPublic = isPublic;
+    }
+    if (contactPerson) {
+      where.contactPerson = contactPerson;
+    }
+     if (searchValue) {
+     if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+        where.title = { [Op.substring]: searchValue };
+      } else {
+        console.log('searchValue==>', searchValue);
       }
-      if (contactPerson) {
-        where.contactPerson = contactPerson;
-      }
+    }
     const { page, skipIndex } = util.pager(ctx.request.body);
     try {
       const { count, rows } = await contactModel.findAndCountAll({
@@ -64,28 +77,28 @@ class ContactController extends BaseController {
   }
   // update
   static async updateContactData(ctx) {
-    const { id, title,contactPerson,phoneNum, address, mobileNum ,isPublic,belong} = ctx.request.body;
+    const { id, title, contactPerson, phoneNum, address, mobileNum, isPublic, belong } = ctx.request.body;
     const params = {};
     if (title) {
       params.title = title;
     }
     if (contactPerson) {
-        params.contactPerson = contactPerson;
-      }
-      if (belong) {
-        params.belong = belong;
-      }
+      params.contactPerson = contactPerson;
+    }
+    if (belong) {
+      params.belong = belong;
+    }
     if (phoneNum) {
-        params.phoneNum = phoneNum;
+      params.phoneNum = phoneNum;
     }
     if (address) {
-        params.address = address;
+      params.address = address;
     }
     if (mobileNum) {
-        params.mobileNum = mobileNum;
+      params.mobileNum = mobileNum;
     }
     if (isPublic) {
-        params.isPublic = isPublic;
+      params.isPublic = isPublic;
     }
     try {
       await ContactModel.update(
