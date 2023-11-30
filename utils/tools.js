@@ -4,7 +4,7 @@ function getFirstAndLastDayOfMonth(dateString) {
   const mydate = moment(dateString, 'YYYY-MM');
   console.log('mydate===>',mydate)
   const firstDay = mydate.startOf('month').format('YYYY-MM-DD');
-  const f_lastDay = moment(mydate.endOf('month').format('YYYY-MM-DD')).add(12, 'hours');
+  const f_lastDay = moment(mydate.endOf('month').format('YYYY-MM-DD')).add(23, 'hours');
   const lastDay = f_lastDay.format('YYYY-MM-DD HH:mm:ss')
   console.log('firstDay===>',firstDay)
   console.log('lastDay===>',lastDay)

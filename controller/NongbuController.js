@@ -169,7 +169,7 @@ class NongbuController extends BaseController {
         [Op.lt]: endDate,
       };
     }
-    let total = 0;
+    console.log(where)
     try {
       const result = await NongbuModel.findAll({
         where,
