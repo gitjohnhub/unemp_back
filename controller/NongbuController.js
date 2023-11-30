@@ -1,7 +1,7 @@
 const BaseController = require('./BaseController');
 const NongbuModel = require('../model/NongbuData');
 const log4js = require('../utils/log4js');
-const {getFirstAndLastDayOfMonth} = require('../utils/tools')
+const {getFirstAndLastDayOfMonth,getFirstAndLastDayOfMonthFromArray} = require('../utils/tools')
 const util = require('../utils/util');
 const { Op, Sequelize } = require('sequelize');
 class NongbuController extends BaseController {
@@ -57,7 +57,7 @@ class NongbuController extends BaseController {
     }
     if (monthRangeSelect) {
       where.createtime = {
-        [Op.between]: [monthRangeSelect[0].slice(0, 10), monthRangeSelect[1].slice(0, 10)],
+        [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
       };
       console.log(where);
     }
