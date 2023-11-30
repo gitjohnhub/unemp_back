@@ -153,10 +153,13 @@ class NongbuController extends BaseController {
       });
   }
   static async getNongbuCalByMonthAndJiezhen(ctx) {
-    const { year, wrongTag } = ctx.request.body;
+    const { year, wrongTag,status } = ctx.request.body;
     const where = {};
     if (wrongTag) {
       where.wrongTag = wrongTag;
+    }
+    if(status){
+      where.status = status
     }
     if (year) {
       const startDate = new Date(Number(year), 0, 1);
