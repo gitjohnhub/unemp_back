@@ -20,6 +20,7 @@ class ZhuanyiController extends BaseController {
       payMonth,
       monthSelect,
     } = ctx.request.body;
+    console.log('zhuanyiBody===>',ctx.request.body);
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
     if (!noindex) {
@@ -56,8 +57,11 @@ class ZhuanyiController extends BaseController {
       where.personID = personID;
     }
     if (payDate) {
-      where.payDate = payDate;
+      where.payDate = {
+        [Op.between]: getFirstAndLastDayOfMonth(payDate),
+      };
     }
+    console.log('wherePayDate===>',where);
     if (isDeleted) {
       where.isDeleted = isDeleted;
     }
