@@ -50,7 +50,9 @@ class NongbuController extends BaseController {
     }
 
     if (jiezhen) {
-      where.jiezhen = jiezhen;
+      where.jiezhen = {
+        [Op.or]:jiezhen,
+      };
     }
     if(cancelUnemp ){
       where.cancelUnemp = cancelUnemp
@@ -169,7 +171,7 @@ class NongbuController extends BaseController {
         [Op.lt]: endDate,
       };
     }
-    console.log(where)
+    console.log('where====>',where)
     try {
       const result = await NongbuModel.findAll({
         where,

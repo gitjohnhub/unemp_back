@@ -131,6 +131,41 @@ class YanchangController extends BaseController {
         console.error('Error:', error);
       });
   }
+  static async getYanchangCalByMonthAndJiezhen(ctx) {
+    const { year, wrongTag,status } = ctx.request.body;
+    const where = {};
+    if (wrongTag) {
+      where.wrongTag = wrongTag;
+    }
+    if(status){
+      where.status = status
+    }
+    if (year) {
+      const startDate = new Date(Number(year), 0, 1);
+      const endDate = new Date(Number(year) + 1, 0, 1);
+      where.createtime = {
+        [Op.gte]: startDate,
+        [Op.lt]: endDate,
+      };
+    }
+    console.log('where====>',where)
+    try {
+      const result = await YanchangModel.findAll({
+        where,
+        attributes: [
+          [Sequelize.fn('MONTH', Sequelize.col('createtime')), 'month'], // 提取月份
+          [Sequelize.fn('COUNT', Sequelize.col('jiezhen')), 'count'], // 统计街镇数量
+          'jiezhen', // 包含街镇名称的字段
+        ],
+        group: [Sequelize.fn('MONTH', Sequelize.col('createtime')), 'jiezhen'], // 按月份和街镇分组
+      });
+
+      console.log(result);
+      ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', result);
+    } catch (error) {
+      console.error('统计查询失败:', error);
+    }
+  }
   static async getYanchangByJiezhen(ctx) {
     const { monthSelect, status } = ctx.request.body;
     const where = {};
