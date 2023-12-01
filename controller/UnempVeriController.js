@@ -3,7 +3,7 @@ const UnempVeriModel = require('../model/UnempVeriData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
 const { Op } = require('sequelize');
-const {getFirstAndLastDayOfMonthFromArray} = require('../utils/tools')
+const {getFirstAndLastDayOfMonth} = require('../utils/tools')
 class UnempVeriController extends BaseController {
   static async getUnempVeriData(ctx) {
     const {
@@ -45,8 +45,8 @@ class UnempVeriController extends BaseController {
     }
     if (monthSelect) {
       console.log(monthSelect);
-      console.log(getFirstAndLastDayOfMonthFromArray(monthSelect))
-      const dateArray = getFirstAndLastDayOfMonthFromArray(monthSelect)
+      console.log(getFirstAndLastDayOfMonth(monthSelect))
+      const dateArray = getFirstAndLastDayOfMonth(monthSelect)
       where.createtime = {
         [Op.between]: [dateArray[0], dateArray[1]],
       };
