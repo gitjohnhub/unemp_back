@@ -18,7 +18,7 @@ class ZhuanyiController extends BaseController {
       noindex,
       searchValue,
       payMonth,
-      searchDate,
+      monthSelect,
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
@@ -33,10 +33,10 @@ class ZhuanyiController extends BaseController {
     if (payMonth) {
       where.payMonth = payMonth;
     }
-    if(searchDate){
+    if(monthSelect){
       // pageOptions = {};
       where.createtime = {
-        [Op.between]: [getFirstAndLastDayOfMonth(searchDate)[0], getFirstAndLastDayOfMonth(searchDate)[1]],
+        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
       };
     }
     if (searchValue) {
