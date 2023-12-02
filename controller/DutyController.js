@@ -18,6 +18,7 @@ class DutyController extends BaseController {
       // pageOptions = {};
       where.dutyDay = dutyDay
     }
+    console.log('where==>',where)
     try {
       const { count, rows } = await DutyModel.findAndCountAll({
         where,
@@ -36,16 +37,23 @@ class DutyController extends BaseController {
    * @param {*} ctx
    */
   static async addDutyData(ctx) {
-    log4js.debug('add====>', ctx.request.body);
+    console.log('add====>', ctx.request.body);
     try {
-      await DutyModel.create(ctx.request.body);
+      if (Array.isArray(ctx.request.body)){
+        console.log('add multi====>', ctx.request.body);
+
+        await DutyModel.bulkCreate(ctx.request.body);
+      }else{
+        console.log('add single====>', ctx.request.body);
+        await DutyModel.create(ctx.request.body);
+      }
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
     } catch (err) {
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
     }
   }
 
-  
+
   // update
   static async updateDutyData(ctx) {
     const {
