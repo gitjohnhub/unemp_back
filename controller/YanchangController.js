@@ -1,7 +1,7 @@
 const BaseController = require('./BaseController');
 const YanchangModel = require('../model/YanchangData');
 const log4js = require('../utils/log4js');
-const { getFirstAndLastDayOfMonth } = require('../utils/tools');
+const { getFirstAndLastDayOfMonth, getFirstAndLastDayOfMonthFromArray } = require('../utils/tools');
 
 const util = require('../utils/util');
 const { Op, Sequelize } = require('sequelize');
@@ -13,6 +13,7 @@ class YanchangController extends BaseController {
       jiezhen,
       checkoperator,
       monthSelect,
+      monthRangeSelect,
       searchValue,
       noindex,
       originalFile,
@@ -46,6 +47,11 @@ class YanchangController extends BaseController {
           getFirstAndLastDayOfMonth(monthSelect)[0],
           getFirstAndLastDayOfMonth(monthSelect)[1],
         ],
+      };
+    }
+    if (monthRangeSelect) {
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
       };
     }
     if (searchValue) {
@@ -236,11 +242,15 @@ class YanchangController extends BaseController {
       endDate,
       note,
       originalFile,
+      wrongTag,
     } = ctx.request.body;
     console.log('update====>', ctx.request.body);
     const params = {};
     if (personID) {
       params.personID = personID;
+    }
+    if (wrongTag != null) {
+      params.wrongTag = wrongTag;
     }
     if (jiezhen) {
       params.jiezhen = jiezhen;
