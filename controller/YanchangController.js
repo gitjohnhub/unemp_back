@@ -1,10 +1,10 @@
 const BaseController = require('./BaseController');
 const YanchangModel = require('../model/YanchangData');
 const log4js = require('../utils/log4js');
-const {getFirstAndLastDayOfMonth} = require('../utils/tools');
+const { getFirstAndLastDayOfMonth } = require('../utils/tools');
 
 const util = require('../utils/util');
-const { Op, Sequelize, where } = require('sequelize');
+const { Op, Sequelize } = require('sequelize');
 class YanchangController extends BaseController {
   static async getYanchangData(ctx) {
     const {
@@ -33,14 +33,19 @@ class YanchangController extends BaseController {
     }
     const where = {};
     if (jiezhen) {
-      where.jiezhen = jiezhen;
+      where.jiezhen = {
+        [Op.or]: jiezhen,
+      };
     }
     if (originalFile) {
       where.originalFile = originalFile;
     }
     if (monthSelect) {
       where.createtime = {
-        [Op.between]: [getFirstAndLastDayOfMonth(monthSelect)[0],getFirstAndLastDayOfMonth(monthSelect)[1]],
+        [Op.between]: [
+          getFirstAndLastDayOfMonth(monthSelect)[0],
+          getFirstAndLastDayOfMonth(monthSelect)[1],
+        ],
       };
     }
     if (searchValue) {
@@ -132,13 +137,13 @@ class YanchangController extends BaseController {
       });
   }
   static async getYanchangCalByMonthAndJiezhen(ctx) {
-    const { year, wrongTag,status } = ctx.request.body;
+    const { year, wrongTag, status } = ctx.request.body;
     const where = {};
     if (wrongTag) {
       where.wrongTag = wrongTag;
     }
-    if(status){
-      where.status = status
+    if (status) {
+      where.status = status;
     }
     if (year) {
       const startDate = new Date(Number(year), 0, 1);
@@ -148,7 +153,7 @@ class YanchangController extends BaseController {
         [Op.lt]: endDate,
       };
     }
-    console.log('where====>',where)
+    console.log('where====>', where);
     try {
       const result = await YanchangModel.findAll({
         where,
