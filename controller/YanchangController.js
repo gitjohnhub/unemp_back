@@ -228,6 +228,7 @@ class YanchangController extends BaseController {
       personName,
       personID,
       payMonth,
+      jiezhen,
       status,
       checkoperator,
       reviewoperator,
@@ -240,6 +241,9 @@ class YanchangController extends BaseController {
     const params = {};
     if (personID) {
       params.personID = personID;
+    }
+    if (jiezhen) {
+      params.jiezhen = jiezhen;
     }
     if (originalFile != null) {
       params.originalFile = originalFile;
