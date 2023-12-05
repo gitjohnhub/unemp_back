@@ -15,6 +15,7 @@ class UnempVeriController extends BaseController {
       checkoperators,
       verification,
       noindex,
+      jiezhen,
       searchValue,
       isIncludeCheckData,
     } = ctx.request.body;
@@ -29,7 +30,11 @@ class UnempVeriController extends BaseController {
       };
     }
     const where = {};
-
+    if (jiezhen) {
+      where.jiezhen = {
+        [Op.or]: jiezhen,
+      };
+    }
     if (searchValue) {
       where.personID = { [Op.substring]: searchValue };
     }
