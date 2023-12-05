@@ -3,7 +3,7 @@ const UnempVeriModel = require('../model/UnempVeriData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
 const { Op } = require('sequelize');
-const {getFirstAndLastDayOfMonth} = require('../utils/tools')
+const { getFirstAndLastDayOfMonthFromArray } = require('../utils/tools');
 class UnempVeriController extends BaseController {
   static async getUnempVeriData(ctx) {
     const {
@@ -11,14 +11,14 @@ class UnempVeriController extends BaseController {
       personName,
       startDate,
       endDate,
-      monthSelect,
+      monthRangeSelect,
       checkoperators,
       verification,
       noindex,
       searchValue,
       isIncludeCheckData,
     } = ctx.request.body;
-    console.log(ctx.request.body)
+    console.log(ctx.request.body);
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
     if (!noindex) {
@@ -38,15 +38,13 @@ class UnempVeriController extends BaseController {
     }
     if (verification) {
       if (isIncludeCheckData == 1) {
-        where.verification = [0,1]
-      } else{
+        where.verification = [0, 1];
+      } else {
         where.verification = verification;
       }
     }
-    if (monthSelect) {
-      console.log(monthSelect);
-      console.log(getFirstAndLastDayOfMonth(monthSelect))
-      const dateArray = getFirstAndLastDayOfMonth(monthSelect)
+    if (monthRangeSelect) {
+      const dateArray = getFirstAndLastDayOfMonthFromArray(monthRangeSelect);
       where.createtime = {
         [Op.between]: [dateArray[0], dateArray[1]],
       };
