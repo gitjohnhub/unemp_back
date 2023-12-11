@@ -2,7 +2,7 @@ const BaseController = require('./BaseController');
 const UnempVeriModel = require('../model/UnempVeriData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
-const { Op } = require('sequelize');
+const { Op, Sequelize } = require('sequelize');
 const { getFirstAndLastDayOfMonthFromArray } = require('../utils/tools');
 class UnempVeriController extends BaseController {
   static async getUnempVeriData(ctx) {
@@ -92,6 +92,27 @@ class UnempVeriController extends BaseController {
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
     }
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
+  }
+  static async getUnempVeriAllDate(ctx) {
+    let months = [];
+    await UnempVeriModel.findAll({
+      attributes: [
+        [Sequelize.fn('date_format', Sequelize.col('createtime'), '%Y-%m'), 'formattedDate'],
+      ],
+      group: 'formattedDate',
+    })
+      .then((results) => {
+        console.log('results==>', results);
+        results.forEach((result) => {
+          months.push(result.getDataValue('formattedDate'));
+        });
+        console.log(months);
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', months);
+        console.log(ctx.body);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
   // update
