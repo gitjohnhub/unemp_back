@@ -3,7 +3,7 @@ const UnempVeriModel = require('../model/UnempVeriData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
 const { Op, Sequelize } = require('sequelize');
-const { getFirstAndLastDayOfMonthFromArray } = require('../utils/tools');
+const { getFirstAndLastDayOfMonthFromArray, getFirstAndLastDayOfMonth } = require('../utils/tools');
 class UnempVeriController extends BaseController {
   static async getUnempVeriData(ctx) {
     const {
@@ -17,9 +17,11 @@ class UnempVeriController extends BaseController {
       noindex,
       jiezhen,
       searchValue,
+      monthSelect,
       isIncludeCheckData,
+      customOrder,
     } = ctx.request.body;
-    console.log(ctx.request.body);
+    const order = [['createtime', 'DESC']];
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
     if (!noindex) {
@@ -30,6 +32,15 @@ class UnempVeriController extends BaseController {
       };
     }
     const where = {};
+    if (customOrder) {
+      order.unshift([customOrder.sortColumn, customOrder.sortRule]);
+    }
+    if (monthSelect) {
+      // pageOptions = {};
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
+      };
+    }
     if (jiezhen) {
       where.jiezhen = {
         [Op.or]: jiezhen,
@@ -66,7 +77,7 @@ class UnempVeriController extends BaseController {
     try {
       const { count, rows } = await UnempVeriModel.findAndCountAll({
         where,
-        order: [['createtime', 'DESC']],
+        order,
         ...pageOptions,
       });
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '查询成功', {
