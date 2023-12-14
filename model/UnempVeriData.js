@@ -9,7 +9,7 @@ const UnempVeriData = sequelize.define('unempveri', {
   personName: DataTypes.STRING,
   personID: DataTypes.STRING,
   jiezhen: DataTypes.STRING,
-  verification: DataTypes.STRING,
+  status: DataTypes.STRING,
   reviewoperator: DataTypes.STRING,
   checkoperator: DataTypes.STRING,
   checknote: DataTypes.STRING,
@@ -20,6 +20,6 @@ const UnempVeriData = sequelize.define('unempveri', {
     timezone: '+08:00',
   },
 });
-UnempVeriData.sync({ alter: true });
+// UnempVeriData.sync({ alter: true });
 
 module.exports = UnempVeriData;

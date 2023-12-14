@@ -41,7 +41,7 @@ class YanchangController extends BaseController {
     if (originalFile) {
       where.originalFile = originalFile;
     }
-    if (monthSelect) {
+    if (monthSelect && monthSelect.length) {
       where.createtime = {
         [Op.between]: [
           getFirstAndLastDayOfMonth(monthSelect)[0],
@@ -49,7 +49,7 @@ class YanchangController extends BaseController {
         ],
       };
     }
-    if (monthRangeSelect) {
+    if (monthRangeSelect && monthRangeSelect.length) {
       where.createtime = {
         [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
       };
@@ -67,7 +67,9 @@ class YanchangController extends BaseController {
       where.personID = personID;
     }
     if (status != null) {
-      where.status = status;
+      where.status = {
+        [Op.or]: status,
+      };
     }
     if (checkoperator) {
       where.checkoperator = checkoperator;

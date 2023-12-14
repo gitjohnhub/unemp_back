@@ -4,6 +4,7 @@ const log4js = require('../utils/log4js');
 const util = require('../utils/util');
 const { Op, Sequelize } = require('sequelize');
 const { getFirstAndLastDayOfMonthFromArray, getFirstAndLastDayOfMonth } = require('../utils/tools');
+const { months } = require('moment');
 class UnempVeriController extends BaseController {
   static async getUnempVeriData(ctx) {
     const {
@@ -13,12 +14,11 @@ class UnempVeriController extends BaseController {
       endDate,
       monthRangeSelect,
       checkoperators,
-      verification,
+      status,
       noindex,
       jiezhen,
       searchValue,
       monthSelect,
-      isIncludeCheckData,
       customOrder,
     } = ctx.request.body;
     const order = [['createtime', 'DESC']];
@@ -31,11 +31,13 @@ class UnempVeriController extends BaseController {
         limit: page.pageSize,
       };
     }
+    console.log('monthSelect===>', monthSelect);
+    console.log('monthRangeSele===>', monthRangeSelect);
     const where = {};
     if (customOrder) {
       order.unshift([customOrder.sortColumn, customOrder.sortRule]);
     }
-    if (monthSelect) {
+    if (monthSelect && monthSelect.length) {
       // pageOptions = {};
       where.createtime = {
         [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
@@ -52,14 +54,12 @@ class UnempVeriController extends BaseController {
     if (personID) {
       where.personID = personID;
     }
-    if (verification) {
-      if (isIncludeCheckData == 1) {
-        where.verification = [0, 1];
-      } else {
-        where.verification = verification;
-      }
+    if (status != null) {
+      where.status = {
+        [Op.or]: status,
+      };
     }
-    if (monthRangeSelect) {
+    if (monthRangeSelect && monthRangeSelect.length) {
       const dateArray = getFirstAndLastDayOfMonthFromArray(monthRangeSelect);
       where.createtime = {
         [Op.between]: [dateArray[0], dateArray[1]],
@@ -74,6 +74,7 @@ class UnempVeriController extends BaseController {
     if (checkoperators) {
       where.checkoperator = { [Op.or]: checkoperators };
     }
+    console.log('where===>', where);
     try {
       const { count, rows } = await UnempVeriModel.findAndCountAll({
         where,
@@ -113,13 +114,10 @@ class UnempVeriController extends BaseController {
       group: 'formattedDate',
     })
       .then((results) => {
-        console.log('results==>', results);
         results.forEach((result) => {
           months.push(result.getDataValue('formattedDate'));
         });
-        console.log(months);
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', months);
-        console.log(ctx.body);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -134,7 +132,7 @@ class UnempVeriController extends BaseController {
       personID,
       jiezhen,
       checknote,
-      verification,
+      status,
       reviewoperator,
       reviewnote,
       checkoperator,
@@ -144,7 +142,7 @@ class UnempVeriController extends BaseController {
       personID,
       jiezhen,
       checknote: checknote !== null ? checknote : '',
-      verification,
+      status,
       reviewoperator,
       reviewnote: reviewnote !== null ? reviewnote : '',
       checkoperator,

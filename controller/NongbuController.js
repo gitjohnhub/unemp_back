@@ -1,7 +1,7 @@
 const BaseController = require('./BaseController');
 const NongbuModel = require('../model/NongbuData');
 const log4js = require('../utils/log4js');
-const {getFirstAndLastDayOfMonth,getFirstAndLastDayOfMonthFromArray} = require('../utils/tools')
+const { getFirstAndLastDayOfMonth, getFirstAndLastDayOfMonthFromArray } = require('../utils/tools');
 const util = require('../utils/util');
 const { Op, Sequelize } = require('sequelize');
 class NongbuController extends BaseController {
@@ -36,28 +36,27 @@ class NongbuController extends BaseController {
     console.log('order===>', order);
 
     const where = {};
-    if (monthSelect) {
+    if (monthSelect && monthSelect.length) {
       where.createtime = {
-        [Op.between]:
-          getFirstAndLastDayOfMonth(monthSelect),
+        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
       };
     }
-    console.log(where.createtime)
-    if(showRepeat){
+    console.log(where.createtime);
+    if (showRepeat) {
       where.repeatTimes = {
-        [Op.gte]:1,
+        [Op.gte]: 1,
       };
     }
 
     if (jiezhen) {
       where.jiezhen = {
-        [Op.or]:jiezhen,
+        [Op.or]: jiezhen,
       };
     }
-    if(cancelUnemp ){
-      where.cancelUnemp = cancelUnemp
+    if (cancelUnemp) {
+      where.cancelUnemp = cancelUnemp;
     }
-    if (monthRangeSelect) {
+    if (monthRangeSelect && monthRangeSelect.length) {
       where.createtime = {
         [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
       };
@@ -76,7 +75,9 @@ class NongbuController extends BaseController {
       where.personID = personID;
     }
     if (status != null) {
-      where.status = status;
+      where.status = {
+        [Op.or]: status,
+      };
     }
     if (originalFile != null) {
       where.originalFile = originalFile;
@@ -155,13 +156,13 @@ class NongbuController extends BaseController {
       });
   }
   static async getNongbuCalByMonthAndJiezhen(ctx) {
-    const { year, wrongTag,status } = ctx.request.body;
+    const { year, wrongTag, status } = ctx.request.body;
     const where = {};
     if (wrongTag) {
       where.wrongTag = wrongTag;
     }
-    if(status){
-      where.status = status
+    if (status) {
+      where.status = status;
     }
     if (year) {
       const startDate = new Date(Number(year), 0, 1);
@@ -171,7 +172,7 @@ class NongbuController extends BaseController {
         [Op.lt]: endDate,
       };
     }
-    console.log('where====>',where)
+    console.log('where====>', where);
     try {
       const result = await NongbuModel.findAll({
         where,
@@ -224,7 +225,7 @@ class NongbuController extends BaseController {
       repeatTimes,
       originalFile,
       cancelUnemp,
-      applyDate
+      applyDate,
     } = ctx.request.body;
     const params = {};
     if (personID) {

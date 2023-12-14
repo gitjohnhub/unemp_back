@@ -3,7 +3,7 @@ const ZhuanyiModel = require('../model/ZhuanyiData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
 const { Op, Sequelize } = require('sequelize');
-const {getFirstAndLastDayOfMonth} = require('../utils/tools')
+const { getFirstAndLastDayOfMonth } = require('../utils/tools');
 class ZhuanyiController extends BaseController {
   static async getZhuanyiData(ctx) {
     const {
@@ -20,7 +20,7 @@ class ZhuanyiController extends BaseController {
       payMonth,
       monthSelect,
     } = ctx.request.body;
-    console.log('zhuanyiBody===>',ctx.request.body);
+    console.log('zhuanyiBody===>', ctx.request.body);
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
     if (!noindex) {
@@ -34,7 +34,7 @@ class ZhuanyiController extends BaseController {
     if (payMonth) {
       where.payMonth = payMonth;
     }
-    if(monthSelect){
+    if (monthSelect && monthSelect.length) {
       // pageOptions = {};
       where.createtime = {
         [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
@@ -61,7 +61,6 @@ class ZhuanyiController extends BaseController {
         [Op.between]: getFirstAndLastDayOfMonth(payDate),
       };
     }
-    console.log('wherePayDate===>',where);
     if (isDeleted) {
       where.isDeleted = isDeleted;
     }
@@ -72,7 +71,9 @@ class ZhuanyiController extends BaseController {
       where.fromArea = fromArea;
     }
     if (status != null) {
-      where.status = status;
+      where.status = {
+        [Op.or]: status,
+      };
     }
     if (isOnlyTransferRelation) {
       where.isOnlyTransferRelation = isOnlyTransferRelation;
@@ -122,10 +123,10 @@ class ZhuanyiController extends BaseController {
       .then((results) => {
         results.forEach((result) => {
           months.push(result.getDataValue('formattedDate'));
-        })
-        console.log(months)
+        });
+        console.log(months);
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', months);
-        console.log(ctx.body)
+        console.log(ctx.body);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -154,7 +155,6 @@ class ZhuanyiController extends BaseController {
         console.error('Error:', error);
       });
   }
-
 
   // TODO
 
