@@ -71,9 +71,13 @@ class ZhuanyiController extends BaseController {
       where.fromArea = fromArea;
     }
     if (status != null) {
-      where.status = {
-        [Op.or]: status,
-      };
+      if (typeof status === 'string') {
+        where.status = status;
+      } else {
+        where.status = {
+          [Op.or]: status,
+        };
+      }
     }
     if (isOnlyTransferRelation) {
       where.isOnlyTransferRelation = isOnlyTransferRelation;
