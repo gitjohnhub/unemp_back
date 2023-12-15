@@ -113,7 +113,7 @@ class ZhuanyiController extends BaseController {
     try {
       await ZhuanyiModel.create(ctx.request.body);
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
-    } catch (e) {
+    } catch (err) {
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
     }
   }
