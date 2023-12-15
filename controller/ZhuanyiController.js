@@ -3,7 +3,7 @@ const ZhuanyiModel = require('../model/ZhuanyiData');
 const log4js = require('../utils/log4js');
 const util = require('../utils/util');
 const { Op, Sequelize } = require('sequelize');
-const { getFirstAndLastDayOfMonth } = require('../utils/tools');
+const { getFirstAndLastDayOfMonth, getFirstAndLastDayOfMonthFromArray } = require('../utils/tools');
 class ZhuanyiController extends BaseController {
   static async getZhuanyiData(ctx) {
     const {
@@ -11,7 +11,6 @@ class ZhuanyiController extends BaseController {
       personName,
       fromArea,
       status,
-      isDeleted,
       payDate,
       isOnlyTransferRelation,
       checkoperator,
@@ -19,6 +18,7 @@ class ZhuanyiController extends BaseController {
       searchValue,
       payMonth,
       monthSelect,
+      monthRangeSelect,
     } = ctx.request.body;
     console.log('zhuanyiBody===>', ctx.request.body);
     const { page, skipIndex } = util.pager(ctx.request.body);
@@ -33,6 +33,11 @@ class ZhuanyiController extends BaseController {
     const where = {};
     if (payMonth) {
       where.payMonth = payMonth;
+    }
+    if (monthRangeSelect && monthRangeSelect.length) {
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
+      };
     }
     if (monthSelect && monthSelect.length) {
       // pageOptions = {};
@@ -60,9 +65,6 @@ class ZhuanyiController extends BaseController {
       where.payDate = {
         [Op.between]: getFirstAndLastDayOfMonth(payDate),
       };
-    }
-    if (isDeleted) {
-      where.isDeleted = isDeleted;
     }
     if (personName) {
       where.personName = personName;
@@ -139,9 +141,6 @@ class ZhuanyiController extends BaseController {
   static async getZhuanyiDataCal(ctx) {
     let total = 0;
     await ZhuanyiModel.findAll({
-      where: {
-        isDeleted: '1',
-      },
       attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
       group: ['status'],
     })
@@ -159,26 +158,6 @@ class ZhuanyiController extends BaseController {
         console.error('Error:', error);
       });
   }
-
-  // TODO
-
-  static async deleteZhuanyiData(ctx) {
-    // log4js.debug(ctx.request.body);
-    const { id } = ctx.request.body;
-    try {
-      await ZhuanyiModel.update(
-        { isDeleted: 1 },
-        {
-          where: {
-            id: id,
-          },
-        }
-      );
-    } catch (e) {
-      ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
-    }
-    ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
-  }
   // update
   static async updateZhuanyiData(ctx) {
     const {
@@ -192,10 +171,8 @@ class ZhuanyiController extends BaseController {
       payDate,
       isOnlyTransferRelation,
       note,
-      isDeleted,
       payMonth,
     } = ctx.request.body;
-    log4js.debug('update====>', ctx.request.body);
     const params = {};
     if (personID) {
       params.personID = personID;
@@ -226,9 +203,6 @@ class ZhuanyiController extends BaseController {
     }
     if (note) {
       params.note = note;
-    }
-    if (isDeleted !== null) {
-      params.isDeleted = isDeleted;
     }
     try {
       await ZhuanyiModel.update(params, {
