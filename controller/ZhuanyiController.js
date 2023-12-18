@@ -67,9 +67,10 @@ class ZhuanyiController extends BaseController {
     }
     if (payDate) {
       where.payDate = {
-        [Op.between]: getFirstAndLastDayOfMonth(payDate),
+        [Op.substring]: payDate,
       };
     }
+    console.log('zhuanyi=====>where==>', where);
     if (personName) {
       where.personName = personName;
     }
