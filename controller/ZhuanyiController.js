@@ -19,10 +19,14 @@ class ZhuanyiController extends BaseController {
       payMonth,
       monthSelect,
       monthRangeSelect,
+      customOrder,
     } = ctx.request.body;
-    console.log('zhuanyiBody===>', ctx.request.body);
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
+    const order = [['createtime', 'DESC']];
+    if (customOrder) {
+      order.unshift([customOrder.sortColumn, customOrder.sortRule]);
+    }
     if (!noindex) {
       // 进行分页
       pageOptions = {
@@ -90,7 +94,7 @@ class ZhuanyiController extends BaseController {
     try {
       const { count, rows } = await ZhuanyiModel.findAndCountAll({
         where,
-        order: [['createtime', 'DESC']],
+        order,
         ...pageOptions,
       });
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '查询成功', {

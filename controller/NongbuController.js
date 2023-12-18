@@ -191,23 +191,6 @@ class NongbuController extends BaseController {
     }
   }
 
-  // TODO
-  static async deleteNongbuData(ctx) {
-    const { id } = ctx.request.body;
-    try {
-      await NongbuModel.update(
-        { status: 1 },
-        {
-          where: {
-            id: id,
-          },
-        }
-      );
-    } catch (e) {
-      ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
-    }
-    ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
-  }
   // update
   static async updateNongbuData(ctx) {
     const {
@@ -261,7 +244,7 @@ class NongbuController extends BaseController {
     if (reviewoperator) {
       params.reviewoperator = reviewoperator;
     }
-    if (status) {
+    if (status != null) {
       params.status = status;
     }
     if (note) {
