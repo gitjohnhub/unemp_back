@@ -130,8 +130,12 @@ class UnempVeriController extends BaseController {
       });
   }
   static async getUnempDataCal(ctx) {
-    const { monthRangeSelect, monthSelect, jiezhen, searchValue } = ctx.request.body;
+    const { monthRangeSelect, monthSelect, jiezhen, searchValue, checkoperators } =
+      ctx.request.body;
     const where = {};
+    if (checkoperators) {
+      where.checkoperator = { [Op.or]: checkoperators };
+    }
     if (jiezhen) {
       where.jiezhen = {
         [Op.or]: jiezhen,
@@ -158,6 +162,7 @@ class UnempVeriController extends BaseController {
       };
     }
     let total = 0;
+    console.log('unemp where==>', where);
     await UnempVeriModel.findAll({
       where,
       attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
@@ -174,8 +179,11 @@ class UnempVeriController extends BaseController {
       });
   }
   static async getUnempByJiezhen(ctx) {
-    const { monthSelect, monthRangeSelect, status, searchValue } = ctx.request.body;
+    const { monthSelect, monthRangeSelect, status, searchValue, checkoperators } = ctx.request.body;
     const where = {};
+    if (checkoperators) {
+      where.checkoperator = { [Op.or]: checkoperators };
+    }
     if (monthSelect && monthSelect.length) {
       where.createtime = {
         [Op.between]: [
