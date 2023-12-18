@@ -14,6 +14,8 @@ router.post('/unempVeriAll', UnempVeriController.getUnempVeriData);
 router.post('/addUnempVeriData', UnempVeriController.addUnempVeriData);
 router.post('/updateUnempVeriData', UnempVeriController.updateUnempVeriData);
 router.post('/getUnempVeriAllDate', UnempVeriController.getUnempVeriAllDate);
+router.post('/getUnempByJiezhen', UnempVeriController.getUnempByJiezhen);
+router.post('/getUnempDataCal', UnempVeriController.getUnempDataCal);
 
 // 外省市协查
 router.post('/getXiechaData', XiechaController.getXiechaData);
@@ -40,6 +42,7 @@ router.post('/getNongbuData', NongbuController.getNongbuData);
 router.post('/addNongbuData', NongbuController.addNongbuData);
 router.post('/updateNongbuData', NongbuController.updateNongbuData);
 router.post('/getNongbuDataCal', NongbuController.getNongbuDataCal);
+router.post('/getNongbuByJiezhen', NongbuController.getNongbuByJiezhen);
 router.post('/getNongbuCalByMonthAndJiezhen', NongbuController.getNongbuCalByMonthAndJiezhen);
 router.post('/getNongbuAllDate', NongbuController.getNongbuAllDate);
 //地区数据

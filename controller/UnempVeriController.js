@@ -49,7 +49,13 @@ class UnempVeriController extends BaseController {
       };
     }
     if (searchValue) {
-      where.personID = { [Op.substring]: searchValue };
+      if (searchValue.length == 18) {
+        where.personID = searchValue;
+      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+        where.personName = { [Op.substring]: searchValue };
+      } else {
+        console.log('searchValue==>', searchValue);
+      }
     }
     if (personID) {
       where.personID = personID;
@@ -118,6 +124,100 @@ class UnempVeriController extends BaseController {
           months.push(result.getDataValue('formattedDate'));
         });
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', months);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+  static async getUnempDataCal(ctx) {
+    const { monthRangeSelect, monthSelect, jiezhen, searchValue } = ctx.request.body;
+    const where = {};
+    if (jiezhen) {
+      where.jiezhen = {
+        [Op.or]: jiezhen,
+      };
+    }
+    if (monthRangeSelect && monthRangeSelect.length) {
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
+      };
+    }
+    if (searchValue) {
+      if (searchValue.length == 18) {
+        where.personID = searchValue;
+      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+        where.personName = { [Op.substring]: searchValue };
+      } else {
+        console.log('searchValue==>', searchValue);
+      }
+    }
+    if (monthSelect && monthSelect.length) {
+      // pageOptions = {};
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
+      };
+    }
+    let total = 0;
+    await UnempVeriModel.findAll({
+      where,
+      attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
+      group: ['status'],
+    })
+      .then((results) => {
+        results.forEach((result) => {
+          total += result.getDataValue('count');
+        });
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+  static async getUnempByJiezhen(ctx) {
+    const { monthSelect, monthRangeSelect, status, searchValue } = ctx.request.body;
+    const where = {};
+    if (monthSelect && monthSelect.length) {
+      where.createtime = {
+        [Op.between]: [
+          getFirstAndLastDayOfMonth(monthSelect)[0],
+          getFirstAndLastDayOfMonth(monthSelect)[1],
+        ],
+      };
+    }
+    if (searchValue) {
+      if (searchValue.length == 18) {
+        where.personID = searchValue;
+      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+        where.personName = { [Op.substring]: searchValue };
+      } else {
+        console.log('searchValue==>', searchValue);
+      }
+    }
+    if (monthRangeSelect && monthRangeSelect.length) {
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
+      };
+    }
+    if (status != null) {
+      if (typeof status === 'string') {
+        where.status = status;
+      } else {
+        where.status = {
+          [Op.or]: status,
+        };
+      }
+    }
+    let total = 0;
+    await UnempVeriModel.findAll({
+      where,
+      attributes: ['jiezhen', [Sequelize.fn('COUNT', Sequelize.col('jiezhen')), 'count']],
+      group: ['jiezhen'],
+    })
+      .then((results) => {
+        results.forEach((result) => {
+          total += result.getDataValue('count');
+        });
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
       })
       .catch((error) => {
         console.error('Error:', error);

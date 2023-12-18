@@ -143,18 +143,41 @@ class ZhuanyiController extends BaseController {
       });
   }
   static async getZhuanyiDataCal(ctx) {
+    const { monthRangeSelect, monthSelect, searchValue } = ctx.request.body;
+    const where = {};
+    if (monthRangeSelect && monthRangeSelect.length) {
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
+      };
+    }
+    if (searchValue) {
+      if (searchValue.length == 18) {
+        where.personID = searchValue;
+      } else if (searchValue.length !== 18 && /^[0-9]+$/.test(searchValue)) {
+        console.log('pay==>', searchValue);
+        where.pay = { [Op.substring]: searchValue };
+        console.log('where==>', where);
+      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+        where.personName = { [Op.substring]: searchValue };
+      } else {
+        console.log('searchValue==>', searchValue);
+      }
+    }
+    if (monthSelect && monthSelect.length) {
+      // pageOptions = {};
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
+      };
+    }
     let total = 0;
     await ZhuanyiModel.findAll({
+      where,
       attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
       group: ['status'],
     })
       .then((results) => {
         results.forEach((result) => {
           total += result.getDataValue('count');
-        });
-        results.push({
-          status: '8',
-          count: total,
         });
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
       })

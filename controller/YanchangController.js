@@ -67,9 +67,13 @@ class YanchangController extends BaseController {
       where.personID = personID;
     }
     if (status != null) {
-      where.status = {
-        [Op.or]: status,
-      };
+      if (typeof status === 'string') {
+        where.status = status;
+      } else {
+        where.status = {
+          [Op.or]: status,
+        };
+      }
     }
     if (checkoperator) {
       where.checkoperator = checkoperator;
@@ -105,18 +109,33 @@ class YanchangController extends BaseController {
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
   }
   static async getYanchangDataCal(ctx) {
+    const { monthRangeSelect, monthSelect, jiezhen } = ctx.request.body;
+    const where = {};
+    if (jiezhen) {
+      where.jiezhen = {
+        [Op.or]: jiezhen,
+      };
+    }
+    if (monthRangeSelect && monthRangeSelect.length) {
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
+      };
+    }
+    if (monthSelect && monthSelect.length) {
+      // pageOptions = {};
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
+      };
+    }
     let total = 0;
     await YanchangModel.findAll({
+      where,
       attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
       group: ['status'],
     })
       .then((results) => {
         results.forEach((result) => {
           total += result.getDataValue('count');
-        });
-        results.push({
-          status: '5',
-          count: total,
         });
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
       })
@@ -180,16 +199,29 @@ class YanchangController extends BaseController {
     }
   }
   static async getYanchangByJiezhen(ctx) {
-    const { monthSelect, status } = ctx.request.body;
+    const { monthSelect, monthRangeSelect, status } = ctx.request.body;
     const where = {};
-    if (monthSelect) {
-      console.log('monthSelect==>,', monthSelect);
+    if (monthSelect && monthSelect.length) {
       where.createtime = {
-        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
+        [Op.between]: [
+          getFirstAndLastDayOfMonth(monthSelect)[0],
+          getFirstAndLastDayOfMonth(monthSelect)[1],
+        ],
+      };
+    }
+    if (monthRangeSelect && monthRangeSelect.length) {
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
       };
     }
     if (status != null) {
-      where.status = status;
+      if (typeof status === 'string') {
+        where.status = status;
+      } else {
+        where.status = {
+          [Op.or]: status,
+        };
+      }
     }
     let total = 0;
     await YanchangModel.findAll({
@@ -201,33 +233,11 @@ class YanchangController extends BaseController {
         results.forEach((result) => {
           total += result.getDataValue('count');
         });
-        results.push({
-          jiezhen: '全部',
-          count: total,
-        });
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
       })
       .catch((error) => {
         console.error('Error:', error);
       });
-  }
-
-  // TODO
-  static async deleteYanchangData(ctx) {
-    const { id } = ctx.request.body;
-    try {
-      await YanchangModel.update(
-        { status: 1 },
-        {
-          where: {
-            id: id,
-          },
-        }
-      );
-    } catch (e) {
-      ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
-    }
-    ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
   }
   // update
   static async updateYanchangData(ctx) {

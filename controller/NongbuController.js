@@ -116,18 +116,42 @@ class NongbuController extends BaseController {
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
   }
   static async getNongbuDataCal(ctx) {
+    const { monthRangeSelect, monthSelect, jiezhen, searchValue } = ctx.request.body;
+    const where = {};
+    if (searchValue) {
+      if (searchValue.length == 18) {
+        where.personID = searchValue;
+      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+        where.personName = { [Op.substring]: searchValue };
+      } else {
+        console.log('searchValue==>', searchValue);
+      }
+    }
+    if (jiezhen) {
+      where.jiezhen = {
+        [Op.or]: jiezhen,
+      };
+    }
+    if (monthRangeSelect && monthRangeSelect.length) {
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
+      };
+    }
+    if (monthSelect && monthSelect.length) {
+      // pageOptions = {};
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
+      };
+    }
     let total = 0;
     await NongbuModel.findAll({
+      where,
       attributes: ['status', [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']],
       group: ['status'],
     })
       .then((results) => {
         results.forEach((result) => {
           total += result.getDataValue('count');
-        });
-        results.push({
-          status: '3',
-          count: total,
         });
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
       })
@@ -150,6 +174,56 @@ class NongbuController extends BaseController {
         console.log(months);
         ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', months);
         console.log(ctx.body);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+  static async getNongbuByJiezhen(ctx) {
+    const { monthSelect, monthRangeSelect, status, searchValue } = ctx.request.body;
+    const where = {};
+    if (monthSelect && monthSelect.length) {
+      where.createtime = {
+        [Op.between]: [
+          getFirstAndLastDayOfMonth(monthSelect)[0],
+          getFirstAndLastDayOfMonth(monthSelect)[1],
+        ],
+      };
+    }
+    if (monthRangeSelect && monthRangeSelect.length) {
+      where.createtime = {
+        [Op.between]: getFirstAndLastDayOfMonthFromArray(monthRangeSelect),
+      };
+    }
+    if (status != null) {
+      if (typeof status === 'string') {
+        where.status = status;
+      } else {
+        where.status = {
+          [Op.or]: status,
+        };
+      }
+    }
+    if (searchValue) {
+      if (searchValue.length == 18) {
+        where.personID = searchValue;
+      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+        where.personName = { [Op.substring]: searchValue };
+      } else {
+        console.log('searchValue==>', searchValue);
+      }
+    }
+    let total = 0;
+    await NongbuModel.findAll({
+      where,
+      attributes: ['jiezhen', [Sequelize.fn('COUNT', Sequelize.col('jiezhen')), 'count']],
+      group: ['jiezhen'],
+    })
+      .then((results) => {
+        results.forEach((result) => {
+          total += result.getDataValue('count');
+        });
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', results);
       })
       .catch((error) => {
         console.error('Error:', error);
