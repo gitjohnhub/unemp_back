@@ -143,6 +143,26 @@ class ZhuanyiController extends BaseController {
         console.error('Error:', error);
       });
   }
+  static async getZhuanyiAllPayDate(ctx) {
+    let months = [];
+    await ZhuanyiModel.findAll({
+      attributes: [
+        [Sequelize.fn('date_format', Sequelize.col('payDate'), '%Y-%m'), 'formattedDate'],
+      ],
+      group: 'formattedDate',
+    })
+      .then((results) => {
+        results.forEach((result) => {
+          months.push(result.getDataValue('formattedDate'));
+        });
+        console.log('months======>', months);
+        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '获得数据', months);
+        console.log(ctx.body);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
   static async getZhuanyiDataCal(ctx) {
     const { monthRangeSelect, monthSelect, searchValue } = ctx.request.body;
     const where = {};
