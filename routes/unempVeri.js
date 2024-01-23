@@ -7,6 +7,7 @@ const handleTersseractController = require('../controller/HandleTesseractControl
 const YanchangController = require('../controller/YanchangController');
 const NongbuController = require('../controller/NongbuController');
 const DutyController = require('../controller/DutyController');
+const BlackController = require('../controller/BlackController');
 router.prefix('/api');
 
 // 失业金
@@ -49,6 +50,9 @@ router.post('/getNongbuAllDate', NongbuController.getNongbuAllDate);
 //地区数据
 router.post('/getProvinceData', ProvinceController.getProvinceData);
 router.post('/handleTesseract', handleTersseractController.handleTersseract);
+// 黑名单
+router.post('/getBlackData', BlackController.getBlackData);
+
 //值班
 router.post('/getDutyData', DutyController.getDutyData);
 router.post('/addDutyData', DutyController.addDutyData);
