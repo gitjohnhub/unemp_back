@@ -35,7 +35,7 @@ class ZhuanyiController extends BaseController {
         limit: page.pageSize,
       };
     }
-    const where = {};
+    let where = {};
     if (payMonth) {
       where.payMonth = payMonth;
     }
@@ -50,19 +50,6 @@ class ZhuanyiController extends BaseController {
         [Op.between]: getFirstAndLastDayOfMonth(monthSelect),
       };
     }
-    if (searchValue) {
-      if (searchValue.length == 18) {
-        where.personID = searchValue;
-      } else if (searchValue.length !== 18 && /^[0-9]+$/.test(searchValue)) {
-        console.log('pay==>', searchValue);
-        where.pay = { [Op.substring]: searchValue };
-        console.log('where==>', where);
-      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
-        where.personName = { [Op.substring]: searchValue };
-      } else {
-        console.log('searchValue==>', searchValue);
-      }
-    }
     if (personID) {
       where.personID = personID;
     }
@@ -71,7 +58,6 @@ class ZhuanyiController extends BaseController {
         [Op.substring]: payDate,
       };
     }
-    console.log('zhuanyi=====>where==>', where);
     if (personName) {
       where.personName = personName;
     }
@@ -98,6 +84,20 @@ class ZhuanyiController extends BaseController {
     if (checkoperator) {
       where.checkoperator = checkoperator;
     }
+    if (searchValue && searchValue.length > 0) {
+      where = {};
+      if (searchValue.length == 18) {
+        where.personID = searchValue;
+      } else if (searchValue.length !== 18 && /^[0-9]+$/.test(searchValue)) {
+        console.log('pay==>', searchValue);
+        where.pay = { [Op.substring]: searchValue };
+      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+        where.personName = { [Op.substring]: searchValue };
+      } else {
+        where.personName = '不存在';
+      }
+    }
+
     try {
       const { count, rows } = await ZhuanyiModel.findAndCountAll({
         where,
