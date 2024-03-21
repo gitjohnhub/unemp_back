@@ -20,6 +20,7 @@ class ZhuanyiController extends BaseController {
       monthSelect,
       monthRangeSelect,
       customOrder,
+      chosenOnlyRelation,
     } = ctx.request.body;
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
@@ -86,6 +87,11 @@ class ZhuanyiController extends BaseController {
         };
       }
     }
+    if (chosenOnlyRelation) {
+      where.isOnlyTransferRelation = {
+        [Op.or]: chosenOnlyRelation,
+      };
+    }
     if (isOnlyTransferRelation) {
       where.isOnlyTransferRelation = isOnlyTransferRelation;
     }
@@ -120,6 +126,37 @@ class ZhuanyiController extends BaseController {
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
     } catch (err) {
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
+    }
+  }
+  static async payAllDataInPayProgress(ctx) {
+    log4js.debug('payAll====>', ctx.request.body);
+    try {
+      // 找出所有 status 值为 2 的记录
+      const recordsToUpdate = await ZhuanyiModel.findAll({
+        where: {
+          status: 2,
+        },
+      });
+
+      // 更新记录的 status 值为 3
+      const updatedRecords = await Promise.all(
+        recordsToUpdate.map((record) => {
+          record.status = 3;
+          return record.save();
+        })
+      );
+      console.log(`成功更新 ${updatedRecords.length} 条记录的状态为 3`);
+      ctx.body = BaseController.renderJsonSuccess(
+        util.CODE.SUCCESS,
+        `成功更新 ${updatedRecords.length} 条记录的状态为 3`,
+        `${updatedRecords.length}`
+      );
+    } catch (error) {
+      ctx.body = BaseController.renderJsonFail(
+        util.CODE.BUSINESS_ERROR,
+        `更新状态时出现错误:${err}`
+      );
+      console.error('更新状态时出现错误:', error);
     }
   }
 

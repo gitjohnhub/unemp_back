@@ -30,6 +30,7 @@ router.post('/updateZhuanyiData', ZhuanyiController.updateZhuanyiData);
 router.post('/getZhuanyiDataCal', ZhuanyiController.getZhuanyiDataCal);
 router.post('/getZhuanyiAllDate', ZhuanyiController.getZhuanyiAllDate);
 router.post('/getZhuanyiAllPayDate', ZhuanyiController.getZhuanyiAllPayDate);
+router.post('/payAllDataInPayProgress', ZhuanyiController.payAllDataInPayProgress);
 
 // 延长
 router.post('/getYanchangData', YanchangController.getYanchangData);
