@@ -58,6 +58,9 @@ router.post('/getBlackData', BlackController.getBlackData);
 // 稳岗
 router.post('/getwengangData', wengangController.getwengangData);
 router.post('/updatewengangData', wengangController.updatewengangData);
+router.post('/getwengangAllDate', wengangController.getwengangAllDate);
+router.post('/getwengangDataCal', wengangController.getwengangDataCal);
+
 //值班
 router.post('/getDutyData', DutyController.getDutyData);
 router.post('/addDutyData', DutyController.addDutyData);

@@ -106,21 +106,17 @@ class wengangController extends BaseController {
       });
   }
   static async getwengangDataCal(ctx) {
-    const { monthRangeSelect, monthSelect, jiezhen, searchValue, checkoperators } =
-      ctx.request.body;
+    const { monthRangeSelect, monthSelect, searchValue, sendPerson } = ctx.request.body;
     const where = {};
     if (searchValue) {
-      if (searchValue.length == 18) {
-        where.personID = searchValue;
-      } else if (/[\u4e00-\u9fa5]/.test(searchValue)) {
+      if (/[\u4e00-\u9fa5]/.test(searchValue)) {
         where.personName = { [Op.substring]: searchValue };
       } else {
         console.log('searchValue==>', searchValue);
       }
     }
-
     let total = 0;
-    console.log('unemp where==>', where);
+    console.log('wengang where==>', where);
     await wengangModel
       .findAll({
         where,
