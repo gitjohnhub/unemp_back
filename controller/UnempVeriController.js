@@ -140,6 +140,7 @@ class UnempVeriController extends BaseController {
         }
       }
     } catch (err) {
+      unsuccessfulUsers.push(user);
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
     }
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功', {

@@ -243,6 +243,57 @@ class ZhuanyiController extends BaseController {
         console.error('Error:', error);
       });
   }
+  static async updateZhuanyiArrayData(ctx) {
+    const { ZhuanyiToPush } = ctx.request.body;
+    console.log('ZhuanyiToPush===>', ZhuanyiToPush);
+    const existingUsers = [];
+    const updatedUsers = [];
+    const unsuccessfulUsers = [];
+    for (const zhuanyiData of ZhuanyiToPush) {
+      try {
+        const existingUser = await ZhuanyiModel.findOne({
+          where: {
+            personID: zhuanyiData.personID,
+            status: {
+              [Op.or]: ['0', '1'],
+            },
+          },
+        });
+        if (existingUser) {
+          // 更新已存在的用户
+          console.log('existingUser===>', existingUser);
+          console.log('existingUser===>', existingUser.pay);
+          if (existingUser.pay !== zhuanyiData.pay) {
+            await existingUser.update(zhuanyiData);
+            updatedUsers.push(existingUser);
+          } else {
+            existingUsers.push(existingUser);
+          }
+        }
+      } catch (err) {
+        unsuccessfulUsers.push(zhuanyiData);
+        ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `更新数据异常:${err}`);
+      }
+    }
+    try {
+      const rows = await ZhuanyiModel.findAll({
+        where: {
+          status: '1',
+          payMonth: '0',
+        },
+      });
+      console.log('rows==>', rows);
+      unsuccessfulUsers.push(...rows);
+    } catch (err) {
+      ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `查询异常:${err}`);
+    }
+
+    ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '更新成功', {
+      existingUsers,
+      updatedUsers,
+      unsuccessfulUsers,
+    });
+  }
   // update
   static async updateZhuanyiData(ctx) {
     const {
