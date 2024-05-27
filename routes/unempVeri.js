@@ -19,6 +19,7 @@ router.post('/updateUnempVeriData', UnempVeriController.updateUnempVeriData);
 router.post('/getUnempVeriAllDate', UnempVeriController.getUnempVeriAllDate);
 router.post('/getUnempByJiezhen', UnempVeriController.getUnempByJiezhen);
 router.post('/getUnempDataCal', UnempVeriController.getUnempDataCal);
+router.post('/addUnempArrayData', UnempVeriController.addUnempArrayData);
 
 // 外省市协查
 router.post('/getXiechaData', XiechaController.getXiechaData);
