@@ -278,7 +278,9 @@ class ZhuanyiController extends BaseController {
     try {
       const rows = await ZhuanyiModel.findAll({
         where: {
-          status: '1',
+          status: {
+            [Op.or]: ['0', '1'],
+          },
           payMonth: '0',
         },
       });
