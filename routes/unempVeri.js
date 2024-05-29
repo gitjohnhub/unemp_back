@@ -8,6 +8,8 @@ const YanchangController = require('../controller/YanchangController');
 const NongbuController = require('../controller/NongbuController');
 const DutyController = require('../controller/DutyController');
 const BlackController = require('../controller/BlackController');
+const wengangController = require('../controller/wengangController');
+
 router.prefix('/api');
 
 // 失业金
@@ -17,6 +19,7 @@ router.post('/updateUnempVeriData', UnempVeriController.updateUnempVeriData);
 router.post('/getUnempVeriAllDate', UnempVeriController.getUnempVeriAllDate);
 router.post('/getUnempByJiezhen', UnempVeriController.getUnempByJiezhen);
 router.post('/getUnempDataCal', UnempVeriController.getUnempDataCal);
+router.post('/addUnempArrayData', UnempVeriController.addUnempArrayData);
 
 // 外省市协查
 router.post('/getXiechaData', XiechaController.getXiechaData);
@@ -31,6 +34,7 @@ router.post('/getZhuanyiDataCal', ZhuanyiController.getZhuanyiDataCal);
 router.post('/getZhuanyiAllDate', ZhuanyiController.getZhuanyiAllDate);
 router.post('/getZhuanyiAllPayDate', ZhuanyiController.getZhuanyiAllPayDate);
 router.post('/payAllDataInPayProgress', ZhuanyiController.payAllDataInPayProgress);
+router.post('/updateZhuanyiArrayData', ZhuanyiController.updateZhuanyiArrayData);
 
 // 延长
 router.post('/getYanchangData', YanchangController.getYanchangData);
@@ -53,6 +57,11 @@ router.post('/getProvinceData', ProvinceController.getProvinceData);
 router.post('/handleTesseract', handleTersseractController.handleTersseract);
 // 黑名单
 router.post('/getBlackData', BlackController.getBlackData);
+// 稳岗
+router.post('/getwengangData', wengangController.getwengangData);
+router.post('/updatewengangData', wengangController.updatewengangData);
+router.post('/getwengangAllDate', wengangController.getwengangAllDate);
+router.post('/getwengangDataCal', wengangController.getwengangDataCal);
 
 //值班
 router.post('/getDutyData', DutyController.getDutyData);

@@ -111,6 +111,44 @@ class UnempVeriController extends BaseController {
     }
     ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功');
   }
+  static async addUnempArrayData(ctx) {
+    log4js.debug('add====>', ctx.request.body);
+    const { unempToPush } = ctx.request.body;
+    console.log('unempToPush===>', unempToPush);
+    const existingUsers = [];
+    const newUsers = [];
+    const unsuccessfulUsers = [];
+
+    try {
+      for (const person of unempToPush) {
+        const [existingUser, created] = await UnempVeriModel.findOrCreate({
+          where: {
+            personID: person.personID,
+            status: '2',
+          },
+          defaults: {
+            personName: person.personName,
+            personID: person.personID,
+            jiezhen: person.jiezhen,
+            checkoperator: person.checkoperator,
+          },
+        });
+        if (created) {
+          newUsers.push(existingUser);
+        } else {
+          existingUsers.push(existingUser);
+        }
+      }
+    } catch (err) {
+      unsuccessfulUsers.push(user);
+      ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `添加数据异常:${err}`);
+    }
+    ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '添加成功', {
+      existingUsers,
+      newUsers,
+      unsuccessfulUsers,
+    });
+  }
   static async getUnempVeriAllDate(ctx) {
     let months = [];
     await UnempVeriModel.findAll({

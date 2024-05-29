@@ -14,6 +14,7 @@ const User = sequelize.define('user', {
   account: DataTypes.STRING,
   password: DataTypes.STRING,
   checkObject: DataTypes.STRING,
+  checkJiezhen: DataTypes.STRING,
   role_id: {
     type: DataTypes.INTEGER,
     defaultValue: 1,
