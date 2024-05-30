@@ -23,7 +23,7 @@ class wengangController extends BaseController {
       person3,
       person4,
       person5,
-      money,
+      jfmoney,
       sendPerson,
       searchValue,
       status,
@@ -31,7 +31,7 @@ class wengangController extends BaseController {
       companyCategory,
       customOrder
     } = ctx.request.body;
-    const order = [['money', 'DESC']];
+    const order = [['btmoney', 'DESC']];
     const { page, skipIndex } = util.pager(ctx.request.body);
     let pageOptions = {};
     if (!noindex) {
@@ -197,45 +197,80 @@ class wengangController extends BaseController {
   static async updatewengangData(ctx) {
     const { id, contactNumber, contactPerson, note, status, companyToCheck } = ctx.request.body;
     if (companyToCheck != null && companyToCheck != undefined) {
+      const updatedCompanies = [];
+      const newCompanies = [];
       try {
-        const companies = await wengangModel.findAll({
-          where: {
-            companyName: {
-              [Op.in]: companyToCheck,
-            },
-          },
-        });
-        const updatedCompanies = [];
-        const untouchedCompanies = [];
-        const notFoundCompanies = [];
-        console.log(companies[0].dataValues);
 
-        const foundCompanyNames = companies.map((company) => company.dataValues.companyName);
-        console.log('foundCompanyNames==>', foundCompanyNames);
-
-        for (const companyName of companyToCheck) {
-          if (foundCompanyNames.includes(companyName)) {
-            const company = companies.find((c) => c.companyName === companyName);
-            if (company.status === '2') {
-              untouchedCompanies.push({ id: company.id, name: company.dataValues.companyName });
-            } else {
-              company.status = 2;
-              await company.save();
-              updatedCompanies.push({ id: company.id, name: company.dataValues.companyName });
+        for (const companyData of companyToCheck) {
+          // 尝试查找是否存在相同的 companyName
+          const company = await wengangModel.findOne({
+            where: {
+              companyName: companyData.companyName
             }
+          });
+
+          if (company) {
+            // 如果找到了,则更新相应的字段
+            await company.update(companyData);
+            console.log('Company updated:', company.companyName);
+            updatedCompanies.push(company);
           } else {
-            notFoundCompanies.push(companyName);
+            // 如果没找到,则创建新的公司记录
+            const newCompany = await wengangModel.create(companyData);
+            newCompanies.push(newCompany);
           }
         }
-        ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, `更新成功`, {
-          updated: updatedCompanies,
-          untouched: untouchedCompanies,
-          notFound: notFoundCompanies,
-        });
       } catch (error) {
-        console.error('Error updating company status:', error);
+        console.error('Error creating/updating companies:', error);
         ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `更新数据异常:${error}`);
       }
+      ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, `更新成功`,{
+        updatedCompanies,
+        newCompanies
+      });
+
+
+
+
+      // try {
+      //   const companies = await wengangModel.findAll({
+      //     where: {
+      //       companyName: {
+      //         [Op.in]: companyToCheck,
+      //       },
+      //     },
+      //   });
+      //   const updatedCompanies = [];
+      //   const untouchedCompanies = [];
+      //   const notFoundCompanies = [];
+      //   console.log(companies[0].dataValues);
+
+      //   const foundCompanyNames = companies.map((company) => company.dataValues.companyName);
+      //   console.log('foundCompanyNames==>', foundCompanyNames);
+
+      //   for (const companyName of companyToCheck) {
+      //     if (foundCompanyNames.includes(companyName)) {
+      //       const company = companies.find((c) => c.companyName === companyName);
+      //       if (company.status === '2') {
+      //         untouchedCompanies.push({ id: company.id, name: company.dataValues.companyName });
+      //       } else {
+      //         company.status = 2;
+      //         await company.save();
+      //         updatedCompanies.push({ id: company.id, name: company.dataValues.companyName });
+      //       }
+      //     } else {
+      //       notFoundCompanies.push(companyName);
+      //     }
+      //   }
+      //   ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, `更新成功`, {
+      //     updated: updatedCompanies,
+      //     untouched: untouchedCompanies,
+      //     notFound: notFoundCompanies,
+      //   });
+      // } catch (error) {
+      //   console.error('Error updating company status:', error);
+      //   ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `更新数据异常:${error}`);
+      // }
     } else {
       const params = {
         contactNumber,
