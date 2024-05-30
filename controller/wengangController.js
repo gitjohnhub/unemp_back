@@ -29,6 +29,7 @@ class wengangController extends BaseController {
       status,
       note,
       companyCategory,
+      customOrder
     } = ctx.request.body;
     const order = [['money', 'DESC']];
     const { page, skipIndex } = util.pager(ctx.request.body);
@@ -41,6 +42,9 @@ class wengangController extends BaseController {
       };
     }
     const where = {};
+    if (customOrder) {
+      order.unshift([customOrder.sortColumn, customOrder.sortRule]);
+    }
 
     if (searchValue) {
       if (/[\u4e00-\u9fa5]/.test(searchValue)) {
