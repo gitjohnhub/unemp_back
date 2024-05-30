@@ -1,5 +1,6 @@
 const router = require('koa-router')();
 const UnempVeriController = require('../controller/UnempVeriController');
+const UnempCheckController = require('../controller/UnempCheckController');
 const XiechaController = require('../controller/XiechaController');
 const ZhuanyiController = require('../controller/ZhuanyiController');
 const ProvinceController = require('../controller/ProvinceController');
@@ -20,6 +21,8 @@ router.post('/getUnempVeriAllDate', UnempVeriController.getUnempVeriAllDate);
 router.post('/getUnempByJiezhen', UnempVeriController.getUnempByJiezhen);
 router.post('/getUnempDataCal', UnempVeriController.getUnempDataCal);
 router.post('/addUnempArrayData', UnempVeriController.addUnempArrayData);
+router.post('/getUnempCheckData', UnempCheckController.getUnempCheckData);
+router.post('/addUnempCheckArrayData', UnempCheckController.addUnempCheckArrayData);
 
 // 外省市协查
 router.post('/getXiechaData', XiechaController.getXiechaData);
