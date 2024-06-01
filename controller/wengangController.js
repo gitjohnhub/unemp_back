@@ -109,7 +109,7 @@ class wengangController extends BaseController {
         console.error('Error:', error);
       });
   }
-  static async getwengangDataCal(ctx) {
+  static async getwengangDateCal(ctx) {
     const { monthRangeSelect, monthSelect, searchValue, sendPerson } = ctx.request.body;
     const where = {};
     if (searchValue) {
@@ -212,7 +212,7 @@ class wengangController extends BaseController {
           if (company) {
             // 如果找到了,则更新相应的字段
             await company.update(companyData);
-            console.log('Company updated:', company.companyName);
+            console.log('wengangModel updated:', company.companyName);
             updatedCompanies.push(company);
           } else {
             // 如果没找到,则创建新的公司记录
@@ -248,5 +248,53 @@ class wengangController extends BaseController {
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, `ID:${id},更新成功`);
     }
   }
+
+  static async getwengangDataCal(ctx) {
+    const wengangData = []
+    try {
+      // 根据 companyCategory 分类统计数量和 btmoney 总和
+      const companyStats = await wengangModel.findAll({
+        attributes: [
+          'companyCategory',
+          [Sequelize.fn('COUNT', Sequelize.col('companyCategory')), 'count'],
+          [Sequelize.fn('SUM', Sequelize.literal('CAST(btmoney AS DOUBLE)')), 'btmoneySum']
+        ],
+        group: ['companyCategory']
+      });
+
+      // 统计 status 数量
+      const statusCounts = await wengangModel.findAll({
+        attributes: [
+          'status',
+          [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']
+        ],
+        group: ['status']
+      });
+
+      // 将结果整合成你要求的格式
+      const result = companyStats.map(item => ({
+        companyCategory: item.companyCategory,
+        count: item.get('count'),
+        btmoney: item.get('btmoneySum')
+      }));
+
+      wengangData.push({
+        companyCategoryStats: result,
+        statusCounts: statusCounts.map(item => ({
+          status: item.status,
+          count: item.get('count')
+        }))
+      });
+    } catch (error) {
+      console.error('Error getting company statistics:', error);
+      wengangData.push( {
+        companyCategoryStats: [],
+        statusCounts: []
+      });
+    }
+    ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, `成功`,wengangData);
+
+  };
+
 }
 module.exports = wengangController;

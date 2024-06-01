@@ -65,6 +65,7 @@ router.post('/getwengangData', wengangController.getwengangData);
 router.post('/updatewengangData', wengangController.updatewengangData);
 router.post('/getwengangAllDate', wengangController.getwengangAllDate);
 router.post('/getwengangDataCal', wengangController.getwengangDataCal);
+router.post('/getwengangDateCal', wengangController.getwengangDateCal);
 
 //值班
 router.post('/getDutyData', DutyController.getDutyData);
