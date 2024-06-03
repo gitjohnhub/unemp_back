@@ -250,6 +250,7 @@ class wengangController extends BaseController {
   }
 
   static async getwengangDataCal(ctx) {
+    const {status} = ctx.request.body
     const wengangData = []
     try {
       // 根据 companyCategory 分类统计数量和 btmoney 总和
@@ -259,7 +260,10 @@ class wengangController extends BaseController {
           [Sequelize.fn('COUNT', Sequelize.col('companyCategory')), 'count'],
           [Sequelize.fn('SUM', Sequelize.literal('CAST(btmoney AS DOUBLE)')), 'btmoneySum']
         ],
-        group: ['companyCategory']
+        group: ['companyCategory'],
+        where:{status:{
+          [Op.or]: status
+        }}
       });
 
       // 统计 status 数量
