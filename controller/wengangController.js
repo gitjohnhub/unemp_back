@@ -270,7 +270,9 @@ class wengangController extends BaseController {
       const statusCounts = await wengangModel.findAll({
         attributes: [
           'status',
-          [Sequelize.fn('COUNT', Sequelize.col('status')), 'count']
+          [Sequelize.fn('COUNT', Sequelize.col('status')), 'count'],
+          [Sequelize.fn('SUM', Sequelize.col('btmoney')), 'btmoneySum']
+
         ],
         group: ['status']
       });
@@ -286,7 +288,8 @@ class wengangController extends BaseController {
         companyCategoryStats: result,
         statusCounts: statusCounts.map(item => ({
           status: item.status,
-          count: item.get('count')
+          count: item.get('count'),
+          btmoney: item.get('btmoneySum')
         }))
       });
     } catch (error) {
