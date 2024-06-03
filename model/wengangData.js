@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/db');
-const wengangData = sequelize.define('wengang', {
+const wengangData = sequelize.define('wengang_copy1', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -15,7 +15,7 @@ const wengangData = sequelize.define('wengang', {
   bankNumber: DataTypes.STRING,
   contactPerson: DataTypes.STRING,
   contactNumber: DataTypes.STRING,
-  btmoney: DataTypes.STRING,
+  btmoney: DataTypes.DOUBLE,
   caiyuanlv: DataTypes.STRING,
   jfrenci: DataTypes.STRING,
   jfmoney: DataTypes.STRING,
