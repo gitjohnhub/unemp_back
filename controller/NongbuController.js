@@ -321,7 +321,7 @@ class NongbuController extends BaseController {
     if (status != null) {
       params.status = status;
     }
-    if (note) {
+    if (status != null) {
       params.note = note;
     }
     if (jiezhen) {
