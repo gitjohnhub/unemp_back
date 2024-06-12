@@ -245,7 +245,6 @@ class ZhuanyiController extends BaseController {
   }
   static async updateZhuanyiArrayData(ctx) {
     const { ZhuanyiToPush } = ctx.request.body;
-    console.log('ZhuanyiToPush===>', ZhuanyiToPush);
     const existingUsers = [];
     const updatedUsers = [];
     const unsuccessfulUsers = [];
@@ -259,12 +258,15 @@ class ZhuanyiController extends BaseController {
             },
           },
         });
+        console.log(`existingUser===>${zhuanyiData.personID}==>${existingUser}`);
+
         if (existingUser) {
           // 更新已存在的用户
-          console.log('existingUser===>', existingUser);
           console.log('existingUser===>', existingUser.pay);
-          if (existingUser.pay !== zhuanyiData.pay) {
+          if (existingUser.pay !== zhuanyiData.pay || existingUser.status !== zhuanyiData.status) {
             await existingUser.update(zhuanyiData);
+            console.log('updating===>!!!');
+
             updatedUsers.push(existingUser);
           } else {
             existingUsers.push(existingUser);
