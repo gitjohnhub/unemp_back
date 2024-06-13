@@ -24,9 +24,19 @@ class DutyController extends BaseController {
         where,
         order: [['dutyDay', 'DESC']],
       });
+      console.log('duty rows===>',rows[0].dataValues.id+1)
+      const otherPerson  = await DutyModel.findAll(
+        {
+          where: {
+            id: rows[0].dataValues.id+1
+          }
+        }
+      );
+      console.log('duty person other===>',otherPerson)
+
       ctx.body = BaseController.renderJsonSuccess(util.CODE.SUCCESS, '查询成功', {
-        count,
         rows,
+        otherPerson,
       });
     } catch (err) {
       ctx.body = BaseController.renderJsonFail(util.CODE.BUSINESS_ERROR, `查询异常:${err}`);
