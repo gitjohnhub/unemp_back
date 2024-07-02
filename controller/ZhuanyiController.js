@@ -263,14 +263,18 @@ class ZhuanyiController extends BaseController {
         if (existingUser) {
           // 更新已存在的用户
           console.log('existingUser===>', existingUser.pay);
-          if (existingUser.pay !== zhuanyiData.pay || existingUser.status !== zhuanyiData.status) {
-            await existingUser.update(zhuanyiData);
-            console.log('updating===>!!!');
+          await existingUser.update(zhuanyiData);
+          console.log('updating===>!!!');
 
-            updatedUsers.push(existingUser);
-          } else {
-            existingUsers.push(existingUser);
-          }
+          updatedUsers.push(existingUser);
+          // if (existingUser.pay !== zhuanyiData.pay || existingUser.status !== zhuanyiData.status) {
+          //   await existingUser.update(zhuanyiData);
+          //   console.log('updating===>!!!');
+
+          //   updatedUsers.push(existingUser);
+          // } else {
+          //   existingUsers.push(existingUser);
+          // }
         }
       } catch (err) {
         unsuccessfulUsers.push(zhuanyiData);
