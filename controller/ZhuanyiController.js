@@ -254,7 +254,7 @@ class ZhuanyiController extends BaseController {
           where: {
             personID: zhuanyiData.personID,
             status: {
-              [Op.or]: ['0', '1'],
+              [Op.or]: ['0', '1', '3'],
             },
           },
         });
